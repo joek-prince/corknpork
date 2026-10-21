@@ -1,0 +1,67 @@
+name: Update corknpork.net
+
+on:
+  schedule:
+    - cron: '0 11 * * 2'   # Tuesday 11:00 UTC: after Monday Night Football
+    - cron: '0 20 * * 4'   # Thursday 20:00 UTC: fresh projections and bet picks before kickoff
+  workflow_dispatch: {}    # "Run workflow" button for a manual refresh
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Pull league data from ESPN
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+          # A code push may build from the saved data if the secrets aren't set yet; scheduled runs must fetch.
+          ALLOW_STALE: ${{ github.event_name == 'push' && '1' || '0' }}
+        run: node scripts/fetch.js data/league.json
+
+      - name: Pull the weekly bet doc
+        run: python3 scripts/bets.py
+
+      - name: Compute stats and build the page
+        run: |
+          python3 scripts/compute.py data/league.json build/results.json
+          python3 scripts/build.py build/results.json _site/index.html
+
+      - name: Save the data snapshot
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "corknpork bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Data update $(date -u +%Y-%m-%d)"
+          git push
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
