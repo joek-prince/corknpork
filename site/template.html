@@ -27,7 +27,7 @@
 <style>
 /* Layout: trophy-room ledger. Varsity-letter masthead, sticky section tabs, stat-sheet tables; cards only for awards, matchups and championship plaques. */
 :root{
-  --bg:#F3F0F1; --surface:#FFFFFF; --sunk:#EAE5E7; --ink:#231C1F; --muted:#5B5155; --line:#DDD4D8;
+  --bg:#F3F0F1; --surface:#FFFFFF; --sunk:#EAE5E7; --ink:#231C1F; --muted:#4F4649; --line:#DDD4D8;
   --accent:#8C2B3B; --accent-ink:#FFFFFF; --brass:#86621A; --brass-soft:#F4EAD3;
   --win:#2A7049; --loss:#AE3A3A;
   --font-display:"Graduate","Rockwell","Georgia",serif;
@@ -69,7 +69,7 @@ button,select{font:inherit;color:inherit}
   display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-block:8px;margin-bottom:24px}
 .tabs::-webkit-scrollbar{display:none}
 .tabs::after{content:"";flex:0 0 24px}
-.tab{flex:0 0 auto;min-height:44px;border:1px solid transparent;background:none;border-radius:999px;padding:0 16px;cursor:pointer;
+.tab{flex:0 0 auto;min-height:44px;min-width:44px;border:1px solid transparent;background:none;border-radius:999px;padding:0 16px;cursor:pointer;
   font-family:var(--font-data);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--muted)}
 .tab:hover{color:var(--ink);border-color:var(--line)}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
@@ -88,7 +88,7 @@ section.view>*,.block>*{min-width:0}
 .award .k{grid-column:1/-1;font-family:var(--font-data);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .award .v{font-family:var(--font-data);font-weight:700;font-size:30px;line-height:1.05;min-width:76px}
 .award .d{font-size:14px;line-height:1.35;overflow-wrap:anywhere;min-width:0}
-.award .d small{display:block;color:var(--muted);font-size:13px}
+.award .d small{display:block;color:var(--muted);font-size:13.5px}
 .award.hot .v{color:var(--accent)}
 
 /* matchup cards */
@@ -97,10 +97,10 @@ section.view>*,.block>*{min-width:0}
 .side{display:grid;grid-template-columns:1fr auto;gap:0 12px;align-items:center}
 .side .tn{font-weight:600;line-height:1.25;overflow-wrap:anywhere;min-width:0}
 .chip.wl{font-size:11px;padding:0 6px;vertical-align:2px;margin-left:2px}
-.side .on{color:var(--muted);font-size:13px;grid-column:1}
+.side .on{color:var(--muted);font-size:13.5px;grid-column:1}
 .side .sc{font-family:var(--font-data);font-weight:700;font-size:23px;grid-row:1/span 2;grid-column:2;text-align:right}
 .side.lose .tn,.side.lose .sc{color:var(--muted);font-weight:500}
-.game .meta{border-top:1px dashed var(--line);padding-top:8px;font-size:13px;color:var(--muted);display:grid;gap:5px}
+.game .meta{border-top:1px dashed var(--line);padding-top:8px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 .split{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;display:flex}
 .split i{display:block;height:100%;background:var(--accent)}
 .split i+i{background:var(--brass)}
@@ -126,7 +126,7 @@ tr:last-child td{border-bottom:0}
 td.l,th.l{text-align:left}
 td.team{text-align:left;white-space:normal;min-width:170px;font-family:var(--font-body)}
 td.team b{font-weight:600;display:block;line-height:1.25}
-td.team span{color:var(--muted);font-size:13px}
+td.team span{color:var(--muted);font-size:13.5px}
 .sticky1 th:first-child,.sticky1 td:first-child{position:sticky;left:0;background:var(--surface);z-index:1;box-shadow:inset -1px 0 0 var(--line)}
 tr.cut td{border-bottom:2px solid var(--accent)}
 th.sortable{cursor:pointer;user-select:none}
@@ -165,7 +165,7 @@ tr.me td,tr.me td:first-child,tr.me th{background:color-mix(in srgb,var(--brass)
 .rec li .val{font-family:var(--font-data);font-weight:700;font-size:19px;min-width:64px}
 .rec li:first-child .val{color:var(--accent)}
 .rec li .txt{min-width:0;overflow-wrap:anywhere;font-size:14px;line-height:1.35}
-.rec li .txt small{display:block;color:var(--muted);font-size:13px}
+.rec li .txt small{display:block;color:var(--muted);font-size:13.5px}
 
 /* matrix */
 .mx td.c{text-align:center;min-width:50px;color:var(--ink)}
@@ -209,7 +209,7 @@ select{min-height:44px;font-family:var(--font-data);font-weight:600;font-size:16
 .mine-grid small{color:var(--muted);font-size:13px}
 .hint{color:var(--muted);font-size:13.5px;margin:0}
 .jump{display:flex;flex-wrap:wrap;gap:8px}
-.jump button{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px;color:var(--muted)}
+.jump button{min-height:44px;min-width:44px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px;color:var(--muted)}
 .jump button:hover{color:var(--ink)}
 .more{justify-self:start;min-height:40px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 14px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px}
 .more-btn{display:none}
@@ -236,9 +236,16 @@ footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:v
   .tabs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
 }
 .totop{display:none}
+.jump-sel{display:none}
+.jump-sel select{width:100%}
+select.unset{border-color:color-mix(in srgb,var(--brass) 60%,transparent);background:var(--brass-soft)}
 @media (max-width:560px){
   .tabs{position:static;flex-wrap:wrap;overflow:visible;gap:6px;padding-block:4px 12px;-webkit-mask-image:none;mask-image:none}
   .tabs::after{display:none}
+  .jump{display:none}
+  td.team{min-width:140px}
+  th,td{padding:9px 7px}
+  .jump-sel{display:block}
   .tab{padding:0 11px;font-size:14.5px;border-color:var(--line);background:var(--surface)}
   .tab[aria-selected="true"]{border-color:var(--ink)}
   .totop{display:inline-flex;align-items:center;gap:6px;position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;
@@ -321,10 +328,11 @@ if (ME && !OWN.includes(ME)) ME = '';
 const meSel = document.getElementById('me');
 [...OWN].sort().forEach(n => meSel.insertAdjacentHTML('beforeend', `<option value="${esc(n)}">${esc(n)}</option>`));
 meSel.value = ME;
+meSel.classList.toggle('unset', !ME);
 function markMe(){
   document.querySelectorAll('[data-o]').forEach(el => el.classList.toggle('me', !!ME && el.dataset.o === ME));
 }
-meSel.addEventListener('change', () => { ME = meSel.value; store.set(ME); if (rendered.week) renderWeek(); markMe(); });
+meSel.addEventListener('change', () => { ME = meSel.value; store.set(ME); meSel.classList.toggle('unset', !ME); if (rendered.week) renderWeek(); markMe(); });
 const dO = name => `data-o="${esc(name)}"`;
 
 /* ---- masthead + footer ---- */
@@ -396,14 +404,14 @@ function renderWeek(){
 
   const move = r => { const d = r.prPrev - r.pr; return d > 0 ? `<span class="up" aria-label="up ${d}">▲${d}</span>` : d < 0 ? `<span class="down" aria-label="down ${-d}">▼${-d}</span>` : `<span class="flat" aria-label="no change">–</span>`; };
   const pr = [...S].sort((a, b) => a.pr - b.pr);
-  const prHtml = `<div class="tbl-wrap"><table class="sticky1"><caption class="sr">Power rankings</caption><thead><tr><th class="l" scope="col">Team</th><th scope="col">Rank</th><th scope="col">Move</th><th scope="col">Power</th><th scope="col">Avg</th><th scope="col">Last 3</th><th scope="col">All-play</th><th scope="col">Record</th></tr></thead><tbody>${
-    pr.map(r => `<tr ${dO(r.owner)}>${tcell(r.team, r.owner)}<td><b>${r.pr}</b></td><td>${move(r)}</td><td><b>${f1(r.power)}</b></td><td>${f1(r.ppg)}</td><td>${f1(r.l3)}</td><td>${r.apw}-${r.apl}</td><td>${r.w}-${r.l}</td></tr>`).join('')
+  const prHtml = `<div class="tbl-wrap"><table class="sticky1"><caption class="sr">Power rankings</caption><thead><tr><th class="l" scope="col">Team</th><th scope="col">Rank</th><th scope="col">Move</th><th scope="col">Power</th><th scope="col" class="adv">Avg</th><th scope="col" class="adv">Last 3</th><th scope="col" class="adv">All-play</th><th scope="col">Record</th></tr></thead><tbody>${
+    pr.map(r => `<tr ${dO(r.owner)}>${tcell(r.team, r.owner)}<td><b>${r.pr}</b></td><td>${move(r)}</td><td><b>${f1(r.power)}</b></td><td class="adv">${f1(r.ppg)}</td><td class="adv">${f1(r.l3)}</td><td class="adv">${r.apw}-${r.apl}</td><td>${r.w}-${r.l}</td></tr>`).join('')
   }</tbody></table></div>`;
 
   const cut = R.poTeams;
   const moreBtn = `<button type="button" class="more more-btn" aria-expanded="false">Show all stats</button>`;
-  const stHtml = `<div class="tbl-wrap" id="st-wrap"><table class="sticky1"><caption class="sr">Standings</caption><thead><tr><th class="l" scope="col">Team</th><th scope="col">Seed</th><th scope="col">W-L</th><th scope="col">PF</th><th scope="col" class="adv">PA</th><th scope="col">All-play</th><th scope="col" class="adv">Luck</th><th scope="col">Streak</th><th scope="col" class="adv">Bench pts</th><th scope="col" class="adv">Lineup %</th><th scope="col" class="adv">Schedule left</th></tr></thead><tbody>${
-    S.map(r => `<tr class="${r.seed === cut ? 'cut' : ''}" ${dO(r.owner)}>${tcell(r.team, r.owner)}<td>${r.seed}</td><td><b>${r.w}-${r.l}${r.tie ? '-' + r.tie : ''}</b></td><td>${f1(r.pf)}</td><td class="adv">${f1(r.pa)}</td><td>${r.apw}-${r.apl}</td><td class="adv ${r.luck > 0.4 ? 'pos' : r.luck < -0.4 ? 'neg' : ''}">${sgn(r.luck)}</td><td><span class="chip ${r.streak[0] === 'W' ? 'w' : 'l'}">${r.streak}</span></td><td class="adv">${f1(r.bench)}</td><td class="adv">${f1(r.eff)}</td><td class="adv">${r.sosRank ? `${ord(r.sosRank)} hardest` : '–'}</td></tr>`).join('')
+  const stHtml = `<div class="tbl-wrap" id="st-wrap"><table class="sticky1"><caption class="sr">Standings</caption><thead><tr><th class="l" scope="col">Team</th><th scope="col">Seed</th><th scope="col">W-L</th><th scope="col">PF</th><th scope="col" class="adv">PA</th><th scope="col" class="adv">All-play</th><th scope="col" class="adv">Luck</th><th scope="col">Streak</th><th scope="col" class="adv">Bench pts</th><th scope="col" class="adv">Lineup %</th><th scope="col" class="adv">Schedule left</th></tr></thead><tbody>${
+    S.map(r => `<tr class="${r.seed === cut ? 'cut' : ''}" ${dO(r.owner)}>${tcell(r.team, r.owner)}<td>${r.seed}</td><td><b>${r.w}-${r.l}${r.tie ? '-' + r.tie : ''}</b></td><td>${f1(r.pf)}</td><td class="adv">${f1(r.pa)}</td><td class="adv">${r.apw}-${r.apl}</td><td class="adv ${r.luck > 0.4 ? 'pos' : r.luck < -0.4 ? 'neg' : ''}">${sgn(r.luck)}</td><td><span class="chip ${r.streak[0] === 'W' ? 'w' : 'l'}">${r.streak}</span></td><td class="adv">${f1(r.bench)}</td><td class="adv">${f1(r.eff)}</td><td class="adv">${r.sosRank ? `${ord(r.sosRank)} hardest` : '–'}</td></tr>`).join('')
   }</tbody></table></div>`;
 
   const all = S.flatMap(r => r.scores), mn = Math.min(...all), mx = Math.max(...all);
@@ -419,7 +427,8 @@ function renderWeek(){
   const inPlayoffs = C.bracket && C.bracket.length && LW >= R.regWeeks && !C.seasonDone;
   parts.push(myWeek());
   const jumps = [['wk-results', `Week ${LW} results`], ...(C.preview.length ? [['wk-preview', `Week ${NW} preview`]] : []), ['wk-power', 'Power rankings'], ['wk-standings', 'Standings'], ['wk-heat', 'Scores by week']];
-  parts.push(`<nav class="jump" aria-label="On this page">${jumps.map(([id, l]) => `<button type="button" data-jump="${id}">${l}</button>`).join('')}</nav>`);
+  parts.push(`<nav class="jump" aria-label="On this page">${jumps.map(([id, l]) => `<button type="button" data-jump="${id}">${l}</button>`).join('')}</nav>` +
+    `<label class="jump-sel"><span class="sr">Jump to a section</span><select data-jump-sel><option value="">Jump to a section…</option>${jumps.map(([id, l]) => `<option value="${id}">${l}</option>`).join('')}</select></label>`);
   if (inPlayoffs) parts.push(bracketBlock());
   parts.push(
     blk(`Week ${LW} awards`, '', `<div class="awards">${tiles}</div>`),
@@ -428,7 +437,7 @@ function renderWeek(){
   if (preview) parts.push(blk(`Week ${NW} preview`, `ESPN projections for each starting lineup as of ${asOfTxt}. Lineups can still change before kickoff.`, `<div class="games">${preview}</div>`, '', 'wk-preview'));
   if (C.bracket && C.bracket.length && !inPlayoffs) parts.push(bracketBlock());
   parts.push(
-    blk('Power rankings', 'Blends season scoring average (60%), the last three weeks (25%) and all-play win rate (15%). Movement compares with last week.', prHtml, '', 'wk-power'),
+    blk('Power rankings', 'Blends season scoring average (60%), the last three weeks (25%) and all-play win rate (15%). Movement compares with last week.', prHtml + moreBtn, '', 'wk-power'),
     blk('Standings', `The top ${cut} make the playoffs; the red line marks the cut. "Schedule left" ranks how strong each team's remaining opponents have scored.`, stHtml + moreBtn, '', 'wk-standings'),
     blk('Scores by week', 'Darker cells are bigger weeks. Each cell shows the result and where the score ranked that week.', heatHtml, '', 'wk-heat'),
     blk('Best player each week', '', `<div class="rec"><ol>${mvps}</ol></div>`),
@@ -439,14 +448,19 @@ function renderWeek(){
       <li>Records count regular-season and championship-bracket games. Consolation games are left out.</li></ul></details>`
   );
   el.innerHTML = parts.join('');
-  el.querySelectorAll('[data-jump]').forEach(b => b.addEventListener('click', () => {
-    const t = document.getElementById(b.dataset.jump); if (!t) return;
+  const jumpTo = id => {
+    const t = document.getElementById(id); if (!t) return;
     const tb = document.querySelector('.tabs'), stuck = getComputedStyle(tb).position === 'sticky';
     const y = t.getBoundingClientRect().top + window.scrollY - (stuck ? tb.offsetHeight : 0) - 12;
     window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  el.querySelectorAll('[data-jump]').forEach(b => b.addEventListener('click', () => jumpTo(b.dataset.jump)));
+  const js = el.querySelector('[data-jump-sel]');
+  if (js) js.addEventListener('change', () => { const id = js.value; js.value = ''; jumpTo(id); });
+  el.querySelectorAll('.more-btn').forEach(mb => mb.addEventListener('click', () => {
+    const w = mb.previousElementSibling, on = w.classList.toggle('full');
+    mb.setAttribute('aria-expanded', String(on)); mb.textContent = on ? 'Show fewer stats' : 'Show all stats';
   }));
-  const mb = el.querySelector('.more-btn');
-  if (mb) mb.addEventListener('click', () => { const w = el.querySelector('#st-wrap'); const on = w.classList.toggle('full'); mb.setAttribute('aria-expanded', String(on)); mb.textContent = on ? 'Show fewer stats' : 'Show all stats'; });
   markMe();
 }
 
