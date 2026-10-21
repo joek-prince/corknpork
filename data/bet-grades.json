@@ -1,0 +1,1610 @@
+[
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Austen",
+  "bet": "ml Giants",
+  "res": "hit",
+  "note": "Cowboys 20, Giants 28"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Brendan",
+  "bet": "td Jalen Hurts",
+  "res": "miss",
+  "note": "no TD; Commanders 22, Eagles 24"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Joe K",
+  "bet": "ml Texans",
+  "res": "miss",
+  "note": "Bills 36, Texans 31"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "John",
+  "bet": "td Ja'Marr Chase",
+  "res": "miss",
+  "note": "no TD; Buccaneers 27, Bengals 33"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Jake",
+  "bet": "tot o 44.5 Bills Texans",
+  "res": "hit",
+  "note": "67 points vs 44.5; Bills 36, Texans 31"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Nick",
+  "bet": "sp Bears -3",
+  "res": "hit",
+  "note": "Bears 59, Panthers 37"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Chris",
+  "bet": "stat Ladd McConkey;recYds;>;50",
+  "res": "hit",
+  "note": "82 recYds (needed > 50)"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Justin",
+  "bet": "sp Steelers -6.5",
+  "res": "hit",
+  "note": "Falcons 13, Steelers 20"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "3 TD (3 rushing)"
+ },
+ {
+  "y": 2026,
+  "wk": 1,
+  "who": "Matt",
+  "bet": "td Chase Brown",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Brendan",
+  "bet": "sp Eagles -6.5",
+  "res": "miss",
+  "note": "Eagles 24, Titans 20"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Joe K",
+  "bet": "sp Patriots -4.5",
+  "res": "hit",
+  "note": "Steelers 3, Patriots 20"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "John",
+  "bet": "td Saquon Barkley",
+  "res": "miss",
+  "note": "no TD; Eagles 24, Titans 20"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Jake",
+  "bet": "td Justin Jefferson",
+  "res": "miss",
+  "note": "no TD; Vikings 9, Bears 3"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Nick",
+  "bet": "sp Broncos -2.5",
+  "res": "hit",
+  "note": "Jaguars 13, Broncos 20"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Chris",
+  "bet": "sp Panthers -2.5",
+  "res": "hit",
+  "note": "Panthers 34, Falcons 3"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Michael",
+  "bet": "sp Buccaneers -8",
+  "res": "miss",
+  "note": "Browns 23, Buccaneers 19"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Evan",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Justin",
+  "bet": "ml Chiefs",
+  "res": "hit",
+  "note": "Colts 30, Chiefs 33"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Steve",
+  "bet": "td Bijan Robinson",
+  "res": "miss",
+  "note": "no TD; Panthers 34, Falcons 3"
+ },
+ {
+  "y": 2026,
+  "wk": 2,
+  "who": "Matt",
+  "bet": "tot o - Cowboys Commanders",
+  "res": "hit",
+  "note": "57 points vs 51.5 (closing total); Commanders 20, Cowboys 37"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Austen",
+  "bet": "sp Lions -7",
+  "res": "push",
+  "note": "Jets 24, Lions 31"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Brendan",
+  "bet": "sp Chiefs -10",
+  "res": "hit",
+  "note": "Chiefs 24, Dolphins 10"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Joe K",
+  "bet": "sp Seahawks -7.5",
+  "res": "miss",
+  "note": "Seahawks 31, Commanders 33"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "John",
+  "bet": "ml Bengals",
+  "res": "miss",
+  "note": "Bengals 27, Steelers 30"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Jake",
+  "bet": "tot u 49.5 Lions Jets",
+  "res": "miss",
+  "note": "55 points vs 49.5; Jets 24, Lions 31"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Nick",
+  "bet": "sp Panthers -2.5",
+  "res": "miss",
+  "note": "Panthers 18, Browns 21"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Chris",
+  "bet": "? no yardage line given",
+  "res": "n/a",
+  "note": "no yardage line given"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Michael",
+  "bet": "sp Bills -7",
+  "res": "hit",
+  "note": "Chargers 16, Bills 24"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Evan",
+  "bet": "stat Sam Darnold;passYds;>;220",
+  "res": "hit",
+  "note": "379 passYds (needed > 220)"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Justin",
+  "bet": "ml Texans",
+  "res": "miss",
+  "note": "Texans 17, Colts 19"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2026,
+  "wk": 3,
+  "who": "Matt",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "hit",
+  "note": "2 TD (2 receiving)"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Austen",
+  "bet": "ml Broncos",
+  "res": "miss",
+  "note": "Broncos 14, 49ers 24"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Joe K",
+  "bet": "tot o - Jets Bears",
+  "res": "miss",
+  "note": "35 points vs 43.5 (closing total); Jets 12, Bears 23"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "John",
+  "bet": "td Parker Washington",
+  "res": "miss",
+  "note": "no TD; Jaguars 22, Bengals 17"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Jake",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "miss",
+  "note": "no TD; Chargers 23, Seahawks 30"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Nick",
+  "bet": "tot o 44.5 Giants Cardinals",
+  "res": "hit",
+  "note": "60 points vs 44.5; Cardinals 24, Giants 36"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Michael",
+  "bet": "sp Packers -3.5",
+  "res": "miss",
+  "note": "Packers 17, Buccaneers 14"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Evan",
+  "bet": "sp Bills -7",
+  "res": "miss",
+  "note": "Patriots 29, Bills 26"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Justin",
+  "bet": "ml Rams",
+  "res": "hit",
+  "note": "Rams 24, Eagles 20"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2026,
+  "wk": 4,
+  "who": "Matt",
+  "bet": "tot o - Cowboys Texans",
+  "res": "hit",
+  "note": "64 points vs 48.5 (closing total); Cowboys 34, Texans 30"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Joe K",
+  "bet": "sp Broncos -3.5",
+  "res": "hit",
+  "note": "Broncos 23, Chargers 17"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "John",
+  "bet": "td Jameson Williams",
+  "res": "hit",
+  "note": "2 TD (2 receiving)"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Jake",
+  "bet": "tot o 41.5 Broncos Chargers",
+  "res": "miss",
+  "note": "40 points vs 41.5; Broncos 23, Chargers 17"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Nick",
+  "bet": "stat Carnell Tate;recYds;>;50",
+  "res": "miss",
+  "note": "6 recYds (needed > 50)"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Michael",
+  "bet": "sp Patriots -3.5",
+  "res": "hit",
+  "note": "Raiders 17, Patriots 45"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Evan",
+  "bet": "tot u 38.5 Jets Browns",
+  "res": "hit",
+  "note": "29 points vs 38.5; Browns 12, Jets 17"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Justin",
+  "bet": "td Nico Collins",
+  "res": "miss",
+  "note": "no TD; Texans 26, Titans 3"
+ },
+ {
+  "y": 2026,
+  "wk": 5,
+  "who": "Matt",
+  "bet": "tot o - Lions Cardinals",
+  "res": "hit",
+  "note": "66 points vs 55.5 (closing total); Lions 45, Cardinals 21"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Austen",
+  "bet": "ml Giants",
+  "res": "miss",
+  "note": "Saints 34, Giants 27"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Brendan",
+  "bet": "ml Chiefs",
+  "res": "hit",
+  "note": "Chargers 6, Chiefs 22"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Joe K",
+  "bet": "sp Colts -6.5",
+  "res": "miss",
+  "note": "Titans 26, Colts 20"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "John",
+  "bet": "ml Panthers",
+  "res": "hit",
+  "note": "Panthers 25, Eagles 14"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Jake",
+  "bet": "ml Steelers",
+  "res": "hit",
+  "note": "Steelers 26, Buccaneers 19"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Nick",
+  "bet": "? no passing-yards line given",
+  "res": "n/a",
+  "note": "no passing-yards line given"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Michael",
+  "bet": "sp Patriots -7.5",
+  "res": "miss",
+  "note": "Jets 19, Patriots 26"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Evan",
+  "bet": "ml Bears",
+  "res": "hit",
+  "note": "Bears 31, Falcons 23"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Justin",
+  "bet": "td Najee Harris",
+  "res": "miss",
+  "note": "no TD; Saints 34, Giants 27"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Ravens 10, Browns 13"
+ },
+ {
+  "y": 2026,
+  "wk": 6,
+  "who": "Matt",
+  "bet": "td Chuba Hubbard",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Austen",
+  "bet": "ml Lions",
+  "res": "miss",
+  "note": "Lions 13, Packers 27"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Brendan",
+  "bet": "dst Broncos",
+  "res": "miss",
+  "note": "no defensive or return TD; Titans 12, Broncos 20"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Joe K",
+  "bet": "sp Jaguars -3.5",
+  "res": "hit",
+  "note": "Panthers 10, Jaguars 26"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "John",
+  "bet": "td James Conner",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Jake",
+  "bet": "? not sure which quarterback \"Bo rock O Ballma\" is",
+  "res": "n/a",
+  "note": "not sure which quarterback \"Bo rock O Ballma\" is"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Nick",
+  "bet": "stat Jayden Daniels;rushYds;<;42.5",
+  "res": "miss",
+  "note": "68 rushYds (needed < 42.5)"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Chris",
+  "bet": "sp Giants 7",
+  "res": "miss",
+  "note": "Giants 6, Commanders 21"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Michael",
+  "bet": "td Stefon Diggs",
+  "res": "miss",
+  "note": "no TD; Raiders 20, Patriots 13"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Evan",
+  "bet": "tot u 44 Raiders Patriots",
+  "res": "hit",
+  "note": "33 points vs 44; Raiders 20, Patriots 13"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Justin",
+  "bet": "td Jahmyr Gibbs",
+  "res": "miss",
+  "note": "no TD; Lions 13, Packers 27"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 1,
+  "who": "Matt",
+  "bet": "td Bucky Irving",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Austen",
+  "bet": "sp Bills -5.5",
+  "res": "hit",
+  "note": "Bills 30, Jets 10"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Brendan",
+  "bet": "ftd CeeDee Lamb",
+  "res": "miss",
+  "note": "first TD: Malik Nabers 29 Yd pass from Russell Wilson (Graham Gano Kick)"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Joe K",
+  "bet": "sp Patriots -1.5",
+  "res": "hit",
+  "note": "Patriots 33, Dolphins 27"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "John",
+  "bet": "stat CeeDee Lamb;recYds;>;80",
+  "res": "hit",
+  "note": "112 recYds (needed > 80)"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Jake",
+  "bet": "sp Steelers -3",
+  "res": "miss",
+  "note": "Seahawks 31, Steelers 17"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Nick",
+  "bet": "sp Broncos -2.5",
+  "res": "miss",
+  "note": "Broncos 28, Colts 29"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Chris",
+  "bet": "stat Jared Goff;passTD;>=;2",
+  "res": "hit",
+  "note": "5 passTD (needed >= 2)"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Michael",
+  "bet": "tot o 46.5 Bills Jets",
+  "res": "miss",
+  "note": "40 points vs 46.5; Bills 30, Jets 10"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Evan",
+  "bet": "sp Buccaneers 2.5",
+  "res": "hit",
+  "note": "Buccaneers 20, Texans 19"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Justin",
+  "bet": "td Jahmyr Gibbs",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Browns 17, Ravens 41"
+ },
+ {
+  "y": 2025,
+  "wk": 2,
+  "who": "Matt",
+  "bet": "td Chase Brown",
+  "res": "miss",
+  "note": "no TD; Jaguars 27, Bengals 31"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Brendan",
+  "bet": "sp Eagles -3",
+  "res": "hit",
+  "note": "Rams 26, Eagles 33"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Joe K",
+  "bet": "sp Chiefs -6",
+  "res": "hit",
+  "note": "Chiefs 22, Giants 9"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "John",
+  "bet": "sp Buccaneers -6.5",
+  "res": "miss",
+  "note": "Jets 27, Buccaneers 29"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Jake",
+  "bet": "sp Falcons -5.5",
+  "res": "miss",
+  "note": "Falcons 0, Panthers 30"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Nick",
+  "bet": "sp Chargers -2.5",
+  "res": "hit",
+  "note": "Broncos 20, Chargers 23"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Chris",
+  "bet": "ml Texans",
+  "res": "miss",
+  "note": "Texans 10, Jaguars 17"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Michael",
+  "bet": "ml Patriots",
+  "res": "miss",
+  "note": "Steelers 21, Patriots 14"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Evan",
+  "bet": "sp Colts -5.5",
+  "res": "hit",
+  "note": "Colts 41, Titans 20"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Justin",
+  "bet": "td Emeka Egbuka",
+  "res": "miss",
+  "note": "no TD; Jets 27, Buccaneers 29"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 3,
+  "who": "Matt",
+  "bet": "stat Tyler Warren;recYds;>=;50",
+  "res": "miss",
+  "note": "38 recYds (needed >= 50)"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Brendan",
+  "bet": "sp Lions -2.5",
+  "res": "hit",
+  "note": "Browns 10, Lions 34"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Joe K",
+  "bet": "sp Chargers -6",
+  "res": "miss",
+  "note": "Chargers 18, Giants 21"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "John",
+  "bet": "stat Josh Jacobs;rushYds;>;70",
+  "res": "hit",
+  "note": "86 rushYds (needed > 70)"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Jake",
+  "bet": "stat Josh Allen;passYds;>=;220",
+  "res": "miss",
+  "note": "209 passYds (needed >= 220)"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Nick",
+  "bet": "stat Jaxson Dart;rushYds;>;40",
+  "res": "hit",
+  "note": "54 rushYds (needed > 40)"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Chris",
+  "bet": "sp Ravens -2.5",
+  "res": "miss",
+  "note": "Ravens 20, Chiefs 37"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Justin",
+  "bet": "ml Bears",
+  "res": "hit",
+  "note": "Bears 25, Raiders 24"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Ravens 20, Chiefs 37"
+ },
+ {
+  "y": 2025,
+  "wk": 4,
+  "who": "Matt",
+  "bet": "tot o - Cowboys Packers",
+  "res": "n/a",
+  "note": "no line given and no closing total found; Packers 40, Cowboys 40"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Joe K",
+  "bet": "sp Dolphins -1.5",
+  "res": "miss",
+  "note": "Dolphins 24, Panthers 27"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "John",
+  "bet": "sp Eagles -4.5",
+  "res": "miss",
+  "note": "Broncos 21, Eagles 17"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Jake",
+  "bet": "tot o 48.5 Cowboys Jets",
+  "res": "hit",
+  "note": "59 points vs 48.5; Cowboys 37, Jets 22"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Nick",
+  "bet": "stat Cam Skattebo;rec;>=;3",
+  "res": "hit",
+  "note": "6 rec (needed >= 3)"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Chris",
+  "bet": "td David Montgomery",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Evan",
+  "bet": "tot o 36.5 Vikings Browns",
+  "res": "hit",
+  "note": "38 points vs 36.5; Vikings 21, Browns 17"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Justin",
+  "bet": "td De'Von Achane",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 5,
+  "who": "Matt",
+  "bet": "td Garrett Wilson",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Austen",
+  "bet": "ml Lions",
+  "res": "miss",
+  "note": "Lions 17, Chiefs 30"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Joe K",
+  "bet": "sp Cowboys -3",
+  "res": "miss",
+  "note": "Cowboys 27, Panthers 30"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "John",
+  "bet": "ml Buccaneers",
+  "res": "hit",
+  "note": "49ers 19, Buccaneers 30"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Jake",
+  "bet": "sp Seahawks -1.5",
+  "res": "hit",
+  "note": "Seahawks 20, Jaguars 12"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Nick",
+  "bet": "stat Tyler Warren;rec;>=;5",
+  "res": "hit",
+  "note": "6 rec (needed >= 5)"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Chris",
+  "bet": "sp Patriots -3.5",
+  "res": "hit",
+  "note": "Patriots 25, Saints 19"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Evan",
+  "bet": "sp Steelers -4.5",
+  "res": "hit",
+  "note": "Browns 9, Steelers 23"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Justin",
+  "bet": "td Ladd McConkey",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Rams 17, Ravens 3"
+ },
+ {
+  "y": 2025,
+  "wk": 6,
+  "who": "Matt",
+  "bet": "tot o - Cowboys",
+  "res": "n/a",
+  "note": "no line given and no closing total found; Cowboys 27, Panthers 30"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Joe K",
+  "bet": "sp Broncos -7.5",
+  "res": "miss",
+  "note": "Giants 32, Broncos 33"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "John",
+  "bet": "ml Panthers",
+  "res": "hit",
+  "note": "Panthers 13, Jets 6"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Jake",
+  "bet": "sp Patriots -6.5",
+  "res": "hit",
+  "note": "Patriots 31, Titans 13"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Nick",
+  "bet": "td Rashee Rice",
+  "res": "hit",
+  "note": "2 TD (2 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Chris",
+  "bet": "stat Kendrick Bourne;recYds;>=;50",
+  "res": "miss",
+  "note": "14 recYds (needed >= 50)"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Evan",
+  "bet": "sp Eagles -1.5",
+  "res": "hit",
+  "note": "Eagles 28, Vikings 22"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Justin",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Steve",
+  "bet": "td Travis Kelce",
+  "res": "miss",
+  "note": "no TD; Raiders 0, Chiefs 31"
+ },
+ {
+  "y": 2025,
+  "wk": 7,
+  "who": "Matt",
+  "bet": "tot o - Cowboys",
+  "res": "n/a",
+  "note": "no line given and no closing total found; Commanders 22, Cowboys 44"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Austen",
+  "bet": "sp Bengals -5.5",
+  "res": "miss",
+  "note": "Jets 39, Bengals 38"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Brendan",
+  "bet": "td Bijan Robinson",
+  "res": "miss",
+  "note": "no TD; Dolphins 34, Falcons 10"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Joe K",
+  "bet": "tot o 51.5 Broncos Cowboys",
+  "res": "hit",
+  "note": "68 points vs 51.5; Cowboys 24, Broncos 44"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "John",
+  "bet": "sp Bills -7",
+  "res": "hit",
+  "note": "Bills 40, Panthers 9"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Jake",
+  "bet": "tot o - Eagles Giants",
+  "res": "n/a",
+  "note": "no line given and no closing total found; Giants 20, Eagles 38"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Nick",
+  "bet": "stat Drake Maye;passTD;>=;2",
+  "res": "hit",
+  "note": "3 passTD (needed >= 2)"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Chris",
+  "bet": "sp Bears 2.5",
+  "res": "miss",
+  "note": "Bears 16, Ravens 30"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Evan",
+  "bet": "td Tee Higgins",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Justin",
+  "bet": "td De'Von Achane",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 8,
+  "who": "Matt",
+  "bet": "td Tyler Warren",
+  "res": "miss",
+  "note": "no TD; Titans 14, Colts 38"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Austen",
+  "bet": "ml Broncos",
+  "res": "hit",
+  "note": "Broncos 18, Texans 15"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Brendan",
+  "bet": "td Bijan Robinson",
+  "res": "miss",
+  "note": "no TD; Falcons 23, Patriots 24"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Joe K",
+  "bet": "sp Patriots -4.5",
+  "res": "miss",
+  "note": "Falcons 23, Patriots 24"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "John",
+  "bet": "td Jahmyr Gibbs",
+  "res": "miss",
+  "note": "no TD; Vikings 27, Lions 24"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Jake",
+  "bet": "tot o 45.5 Patriots Falcons",
+  "res": "hit",
+  "note": "47 points vs 45.5; Falcons 23, Patriots 24"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Chris",
+  "bet": "td Kimani Vidal",
+  "res": "miss",
+  "note": "no TD; Chargers 27, Titans 20"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Michael",
+  "bet": "ml Chiefs",
+  "res": "miss",
+  "note": "Chiefs 21, Bills 28"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Evan",
+  "bet": "td Christian McCaffrey",
+  "res": "hit",
+  "note": "2 TD (1 rushing) (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Justin",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "miss",
+  "note": "no TD; Seahawks 38, Commanders 14"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Steve",
+  "bet": "sp Colts -3.5",
+  "res": "miss",
+  "note": "Colts 20, Steelers 27"
+ },
+ {
+  "y": 2025,
+  "wk": 9,
+  "who": "Matt",
+  "bet": "ml Giants",
+  "res": "miss",
+  "note": "49ers 34, Giants 24"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Brendan",
+  "bet": "tot o 47.5 Patriots Buccaneers",
+  "res": "hit",
+  "note": "51 points vs 47.5; Patriots 28, Buccaneers 23"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Joe K",
+  "bet": "sp Texans 1.5",
+  "res": "hit",
+  "note": "Jaguars 29, Texans 36"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "John",
+  "bet": "td TreVeyon Henderson",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Jake",
+  "bet": "tot o - Patriots Buccaneers",
+  "res": "n/a",
+  "note": "no line given and no closing total found; Patriots 28, Buccaneers 23"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Nick",
+  "bet": "? not sure which player \"Jettas\" is",
+  "res": "n/a",
+  "note": "not sure which player \"Jettas\" is"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Evan",
+  "bet": "sp Bills -9",
+  "res": "miss",
+  "note": "Bills 13, Dolphins 30"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Justin",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Ravens 27, Vikings 19"
+ },
+ {
+  "y": 2025,
+  "wk": 10,
+  "who": "Matt",
+  "bet": "sp Panthers -5.5",
+  "res": "miss",
+  "note": "Saints 17, Panthers 7"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Austen",
+  "bet": "ml Bears",
+  "res": "hit",
+  "note": "Bears 19, Vikings 17"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Brendan",
+  "bet": "sp Broncos 4.5",
+  "res": "hit",
+  "note": "Chiefs 19, Broncos 22"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Joe K",
+  "bet": "sp Chargers -3",
+  "res": "miss",
+  "note": "Chargers 6, Jaguars 35"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "John",
+  "bet": "sp Lions 2.5",
+  "res": "miss",
+  "note": "Lions 9, Eagles 16"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Jake",
+  "bet": "tot o 46.5 Bills Buccaneers",
+  "res": "hit",
+  "note": "76 points vs 46.5; Buccaneers 32, Bills 44"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Nick",
+  "bet": "tot o 42.5 Giants Packers",
+  "res": "hit",
+  "note": "47 points vs 42.5; Packers 27, Giants 20"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Chris",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "miss",
+  "note": "no TD; Seahawks 19, Rams 21"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Evan",
+  "bet": "tot o 48 Steelers Bengals",
+  "res": "miss",
+  "note": "46 points vs 48; Bengals 12, Steelers 34"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Justin",
+  "bet": "stat Jameis Winston;int;>=;2",
+  "res": "miss",
+  "note": "1 int (needed >= 2)"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Steve",
+  "bet": "stat Joe Flacco;passYds;>=;270",
+  "res": "miss",
+  "note": "199 passYds (needed >= 270)"
+ },
+ {
+  "y": 2025,
+  "wk": 11,
+  "who": "Matt",
+  "bet": "td Saquon Barkley",
+  "res": "miss",
+  "note": "no TD; Lions 9, Eagles 16"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Austen",
+  "bet": "stat Amon-Ra St. Brown;recYds;>;78.5",
+  "res": "hit",
+  "note": "149 recYds (needed > 78.5)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Brendan",
+  "bet": "td Jalen Hurts",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Joe K",
+  "bet": "sp Chiefs -3.5",
+  "res": "miss",
+  "note": "Colts 20, Chiefs 23"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "John",
+  "bet": "tot u 36.5 Raiders Browns",
+  "res": "hit",
+  "note": "34 points vs 36.5; Browns 24, Raiders 10"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Jake",
+  "bet": "tot o 41.5 Vikings Packers",
+  "res": "miss",
+  "note": "29 points vs 41.5; Vikings 6, Packers 23"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Nick",
+  "bet": "tot u 50.5 Colts Chiefs",
+  "res": "hit",
+  "note": "43 points vs 50.5; Colts 20, Chiefs 23"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Chris",
+  "bet": "stat Drake Maye;passTD;>=;2",
+  "res": "miss",
+  "note": "1 passTD (needed >= 2)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Michael",
+  "bet": "ml Patriots",
+  "res": "hit",
+  "note": "Patriots 26, Bengals 20"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Evan",
+  "bet": "td Jaxon Smith-Njigba",
+  "res": "hit",
+  "note": "2 TD (2 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Justin",
+  "bet": "td Jameis Winston",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "hit",
+  "note": "2 TD (2 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 12,
+  "who": "Matt",
+  "bet": "sp Raiders -4",
+  "res": "miss",
+  "note": "Browns 24, Raiders 10"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Austen",
+  "bet": "sp Buccaneers -3.5",
+  "res": "miss",
+  "note": "Cardinals 17, Buccaneers 20"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Brendan",
+  "bet": "sp Bills -2.5",
+  "res": "hit",
+  "note": "Bills 26, Steelers 7"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Joe K",
+  "bet": "sp Browns 5.5",
+  "res": "miss",
+  "note": "49ers 26, Browns 8"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "John",
+  "bet": "ml Texans",
+  "res": "hit",
+  "note": "Texans 20, Colts 16"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Jake",
+  "bet": "tot o 45.5 Bills Steelers",
+  "res": "miss",
+  "note": "33 points vs 45.5; Bills 26, Steelers 7"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Nick",
+  "bet": "stat Christian McCaffrey;rec;>=;5",
+  "res": "miss",
+  "note": "4 rec (needed >= 5)"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Michael",
+  "bet": "sp Patriots -7",
+  "res": "hit",
+  "note": "Giants 15, Patriots 33"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Evan",
+  "bet": "sp Jaguars -5.5",
+  "res": "hit",
+  "note": "Jaguars 25, Titans 3"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Justin",
+  "bet": "td De'Von Achane",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Steve",
+  "bet": "td Christian McCaffrey",
+  "res": "hit",
+  "note": "1 TD (1 rushing)"
+ },
+ {
+  "y": 2025,
+  "wk": 13,
+  "who": "Matt",
+  "bet": "ml Dolphins",
+  "res": "hit",
+  "note": "Saints 17, Dolphins 21"
+ },
+ {
+  "y": 2025,
+  "wk": 14,
+  "who": "Evan",
+  "bet": "sp Seahawks -6.5",
+  "res": "hit",
+  "note": "Seahawks 37, Falcons 9"
+ },
+ {
+  "y": 2025,
+  "wk": 14,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Steelers 27, Ravens 22"
+ }
+]
