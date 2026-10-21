@@ -102,7 +102,7 @@ async function buildData(getJSON, opts) {
     const steals = [...skill].filter(r => r.rd >= 4).sort((a, b) => b.val - a.val).slice(0, 3);
     const busts = [...skill].filter(r => r.rd <= 3).sort((a, b) => a.val - b.val).slice(0, 3);
     const haul = {}; for (const r of rows) haul[r.tm] = (haul[r.tm] || 0) + r.act;
-    const f = r => [r.name, r.pos, r.rd, r.ov, r.tm, r1(r.act), r.prk];
+    const f = r => [r.name, r.pos, r.rd, r.ov, r.tm, r1(r.act), r.prk, r.val];
     const firsts = rows.filter(r => r.rd === 1).sort((a, b) => a.ov - b.ov).map(r => [r.name, r.pos, r.ov, r.tm, r1(r.act), r.prk || null]);
     draft[y] = { steals: steals.map(f), busts: busts.map(f), haul: Object.entries(haul).map(([t, v]) => [+t, r1(v)]).sort((a, b) => b[1] - a[1]), firsts };
   }

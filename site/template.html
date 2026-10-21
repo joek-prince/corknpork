@@ -84,8 +84,8 @@ section.view>*,.block>*{min-width:0}
 
 /* award tiles */
 .awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
-.award{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center;min-width:0}
-.award .k{grid-column:1/-1;font-family:var(--font-data);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.award{background:var(--brass-soft);border:1px solid color-mix(in srgb,var(--brass) 30%,transparent);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center;align-content:start;min-width:0}
+.award .k{grid-column:1/-1;font-family:var(--font-data);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .award .v{font-family:var(--font-data);font-weight:700;font-size:30px;line-height:1.05;min-width:76px}
 .award .d{font-size:14px;line-height:1.35;overflow-wrap:anywhere;min-width:0}
 .award .d small{display:block;color:var(--muted);font-size:12.5px}
@@ -96,6 +96,7 @@ section.view>*,.block>*{min-width:0}
 .game{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:8px;min-width:0}
 .side{display:grid;grid-template-columns:1fr auto;gap:0 12px;align-items:center}
 .side .tn{font-weight:600;line-height:1.25;overflow-wrap:anywhere;min-width:0}
+.chip.wl{font-size:11px;padding:0 6px;vertical-align:2px;margin-left:2px}
 .side .on{color:var(--muted);font-size:12.5px;grid-column:1}
 .side .sc{font-family:var(--font-data);font-weight:700;font-size:23px;grid-row:1/span 2;grid-column:2;text-align:right}
 .side.lose .tn,.side.lose .sc{color:var(--muted);font-weight:500}
@@ -120,7 +121,7 @@ section.view>*,.block>*{min-width:0}
 table{border-collapse:collapse;width:100%;font-family:var(--font-data);font-size:14.5px}
 caption{text-align:left}
 th,td{padding:9px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
-th{font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+th{font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 tr:last-child td{border-bottom:0}
 td.l,th.l{text-align:left}
 td.team{text-align:left;white-space:normal;min-width:170px;font-family:var(--font-body)}
@@ -191,7 +192,7 @@ select{min-height:44px;font-family:var(--font-data);font-weight:600;font-size:16
 
 .career{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.stat .k{font-family:var(--font-data);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat .k{font-family:var(--font-data);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .stat .v{font-family:var(--font-data);font-weight:700;font-size:24px;line-height:1.15}
 
 .bracket{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
@@ -203,12 +204,12 @@ select{min-height:44px;font-family:var(--font-data);font-weight:600;font-size:16
 .mine h2{font-family:var(--font-display);font-weight:400;font-size:21px}
 .mine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px 18px}
 .mine-grid div{display:grid;gap:1px;min-width:0}
-.mine-grid .k{font-family:var(--font-data);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mine-grid .k{font-family:var(--font-data);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .mine-grid .v{font-weight:600;overflow-wrap:anywhere}
 .mine-grid small{color:var(--muted);font-size:13px}
 .hint{color:var(--muted);font-size:13.5px;margin:0}
-.jump{display:flex;flex-wrap:wrap;gap:6px}
-.jump button{min-height:36px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px;color:var(--muted)}
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+.jump button{min-height:40px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 12px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px;color:var(--muted)}
 .jump button:hover{color:var(--ink)}
 .more{justify-self:start;min-height:40px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 14px;cursor:pointer;font-family:var(--font-data);font-weight:600;font-size:14px}
 .more-btn{display:none}
@@ -234,8 +235,17 @@ footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:v
 @media (max-width:760px){
   .tabs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
 }
+.totop{display:none}
 @media (max-width:560px){
+  .tabs{position:static;flex-wrap:wrap;overflow:visible;gap:6px;padding-block:4px 12px;-webkit-mask-image:none;mask-image:none}
+  .tabs::after{display:none}
+  .tab{padding:0 11px;font-size:14.5px;border-color:var(--line);background:var(--surface)}
+  .tab[aria-selected="true"]{border-color:var(--ink)}
+  .totop{display:inline-flex;align-items:center;gap:6px;position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;
+    min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font-family:var(--font-data);font-weight:600;font-size:15px;box-shadow:0 4px 14px color-mix(in srgb,var(--ink) 18%,transparent);cursor:pointer}
   .awards{grid-template-columns:1fr 1fr}
+  .awards>.award:last-child:nth-child(odd){grid-column:1/-1}
   .award{grid-template-columns:1fr}
   .award .v{font-size:26px}
   .mast{align-items:stretch}
@@ -268,6 +278,8 @@ footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:v
     <button class="tab" role="tab" data-tab="drafts" id="tab-drafts" aria-controls="p-drafts">Drafts</button>
     <button class="tab" role="tab" data-tab="owners" id="tab-owners" aria-controls="p-owners">Owners</button>
   </nav>
+
+  <button type="button" class="totop" hidden>↑ Sections</button>
 
   <main>
     <section class="view" id="p-week" role="tabpanel" aria-labelledby="tab-week"></section>
@@ -357,7 +369,7 @@ function renderWeek(){
     tile('Missed projection', sgn(A.missProj.v), `<b>${esc(tm(A.missProj.tm).team)}</b><small>Scored ${f1(A.missProj.a)}, projected ${f1(A.missProj.p)}</small>`, A.missProj.tm),
   ].join('');
 
-  const side = (id, pts, win) => `<div class="side ${win ? '' : 'lose'}"><span class="tn">${esc(tm(id).team)}${win ? '<span class="sr"> (won)</span>' : ''}</span><span class="on">${esc(tm(id).owner)}</span><span class="sc num">${f2(pts)}</span></div>`;
+  const side = (id, pts, win) => `<div class="side ${win ? '' : 'lose'}"><span class="tn">${esc(tm(id).team)}${win ? ' <span class="chip w wl" aria-hidden="true">W</span><span class="sr"> (won)</span>' : ''}</span><span class="on">${esc(tm(id).owner)}</span><span class="sc num">${f2(pts)}</span></div>`;
   const recap = C.recap.map(m => `<article class="game" ${dO(tm(m.h).owner)} data-o2="${esc(tm(m.a).owner)}">
       ${side(m.h, m.hp, m.win === 'H')}${side(m.a, m.ap, m.win === 'A')}
       <div class="meta"><span>Top scorers: ${esc(m.hTop[0])} ${f1(m.hTop[1])} · ${esc(m.aTop[0])} ${f1(m.aTop[1])}</span>
@@ -429,7 +441,8 @@ function renderWeek(){
   el.innerHTML = parts.join('');
   el.querySelectorAll('[data-jump]').forEach(b => b.addEventListener('click', () => {
     const t = document.getElementById(b.dataset.jump); if (!t) return;
-    const y = t.getBoundingClientRect().top + window.scrollY - document.querySelector('.tabs').offsetHeight - 12;
+    const tb = document.querySelector('.tabs'), stuck = getComputedStyle(tb).position === 'sticky';
+    const y = t.getBoundingClientRect().top + window.scrollY - (stuck ? tb.offsetHeight : 0) - 12;
     window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   }));
   const mb = el.querySelector('.more-btn');
@@ -645,7 +658,7 @@ function renderRivalries(){
     const tpi = rows.reduce((s, r) => s + r.pi, 0), tpj = rows.reduce((s, r) => s + r.pj, 0);
     out.innerHTML = `<div class="career" style="margin-top:12px">
       <div class="stat"><div class="k">${esc(first(OWN[i]))}'s record</div><div class="v num">${w}-${l}</div></div>
-      <div class="stat"><div class="k">Avg score</div><div class="v num">${f1(tpi / rows.length)}</div></div>
+      <div class="stat"><div class="k">${esc(first(OWN[i]))} avg</div><div class="v num">${f1(tpi / rows.length)}</div></div>
       <div class="stat"><div class="k">${esc(first(OWN[j]))} avg</div><div class="v num">${f1(tpj / rows.length)}</div></div>
       <div class="stat"><div class="k">Avg margin</div><div class="v num">${sgn((tpi - tpj) / rows.length)}</div></div></div>
       <div class="tbl-wrap" style="margin-top:12px"><table><caption class="sr">Every game between ${esc(OWN[i])} and ${esc(OWN[j])}</caption><thead><tr><th class="l" scope="col">Game</th><th scope="col">${esc(OWN[i])}</th><th scope="col">${esc(OWN[j])}</th><th scope="col">Result</th></tr></thead><tbody>${
@@ -663,7 +676,9 @@ function renderDrafts(){
   function draw(focusYear){
     const d = R.draft[yr], teams = R.draftTeams[yr], partial = +yr === YR && !C.seasonDone;
     const who = id => teams[String(id)];
-    const pLi = p => `<li ${dO(who(p[4]).owner)}><span class="val num">${f1(p[5])}</span><span class="txt">${esc(p[0])} <span class="muted">${p[1]}</span><small>Round ${p[2]}, pick ${p[3]} by ${esc(who(p[4]).owner)}. Finished ${ord(p[6])} among drafted players.</small></span></li>`;
+    const spots = v => (v > 0 ? '+' : '−') + Math.abs(v);
+    const pLi = p => `<li ${dO(who(p[4]).owner)}><span class="val num">${p[7] != null ? spots(p[7]) : f1(p[5])}</span><span class="txt">${esc(p[0])} <span class="muted">${p[1]}</span><small>Round ${p[2]}, pick ${p[3]} · ${esc(who(p[4]).owner)} · finished ${ord(p[6])} with ${f1(p[5])} pts</small></span></li>`;
+    const ranked = (d.steals[0] || [])[7] != null;
     const maxH = d.haul[0][1];
     const haul = d.haul.map((h, i) => `<div class="bar ${i === 0 ? 'top' : ''}" ${dO(who(h[0]).owner)}><span class="lbl">${esc(who(h[0]).owner)} <span>${esc(who(h[0]).team)}</span></span><span class="val num">${f1(h[1])}</span><span class="track"><i style="width:${(h[1] / maxH * 100).toFixed(1)}%"></i></span></div>`).join('');
     const firsts = `<div class="tbl-wrap"><table class="sticky1"><caption class="sr">Round 1 picks</caption><thead><tr><th class="l" scope="col">Player</th><th scope="col">Pick</th><th class="l" scope="col">Drafted by</th><th scope="col">Points</th><th scope="col">Finish</th></tr></thead><tbody>${
@@ -671,8 +686,8 @@ function renderDrafts(){
     }</tbody></table></div>`;
     el.innerHTML = `<div class="seg" role="group" aria-label="Draft year">${years.map(y => `<button type="button" aria-pressed="${y === yr}" data-y="${y}">${y}</button>`).join('')}</div>` +
       (partial ? `<p class="note">${yr} numbers are season to date through Week ${LW}.</p>` : '') +
-      `<div class="two">${blk('Steals', 'Round 4 or later. Players who most outscored their draft slot.', `<div class="rec"><ol>${d.steals.map(pLi).join('')}</ol></div>`)}${
-        blk('Busts', 'Rounds 1 to 3. Players who fell furthest short of their draft slot.', `<div class="rec"><ol>${d.busts.map(pLi).join('')}</ol></div>`)}</div>` +
+      `<div class="two">${blk('Steals', ranked ? 'Round 4 or later. The number is how many spots higher he finished than where he was drafted.' : 'Round 4 or later. Players who most outscored their draft slot.', `<div class="rec"><ol>${d.steals.map(pLi).join('')}</ol></div>`)}${
+        blk('Busts', ranked ? 'Rounds 1 to 3. The number is how many spots lower he finished than where he was drafted.' : 'Rounds 1 to 3. Players who fell furthest short of their draft slot.', `<div class="rec"><ol>${d.busts.map(pLi).join('')}</ol></div>`)}</div>` +
       blk('Round 1', 'Finish ranks each player by fantasy points among everyone drafted that year, kickers and defenses excluded.', firsts) +
       blk('Draft haul', 'Total fantasy points scored by every player each owner drafted, no matter who rostered him later.', `<div class="bars">${haul}</div>`);
     el.querySelectorAll('.seg button').forEach(bn => bn.addEventListener('click', () => { yr = bn.dataset.y; draw(true); }));
@@ -735,6 +750,14 @@ tabs.forEach((t, i) => {
   });
 });
 window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+const tabBar = document.querySelector('.tabs'), toTop = document.querySelector('.totop');
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(([e]) => { toTop.hidden = e.isIntersecting || e.boundingClientRect.top > 0; }).observe(tabBar);
+}
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: Math.max(0, tabBar.offsetTop - 8), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  (document.querySelector('.tab[aria-selected="true"]') || tabBar).focus({ preventScroll: true });
+});
 show(location.hash.slice(1));
 })();
 </script>
