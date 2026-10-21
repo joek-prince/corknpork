@@ -1,0 +1,212 @@
+# How each pick in the bet doc is graded. One line per pick:
+#   season | week | who | bet
+# Bets:
+#   ml TEAM                      moneyline
+#   sp TEAM LINE                 spread, e.g. "sp Colts -6.5"
+#   tot o|u LINE TEAM [TEAM]     game total; LINE "-" means use ESPN's closing total
+#   td PLAYER                    anytime touchdown (rushing, receiving or return)
+#   ftd PLAYER                   first touchdown of the game
+#   dst TEAM                     defense / special teams touchdown
+#   stat PLAYER;STAT;OP;LINE     STAT = passYds rushYds recYds rec passTD int; OP = > >= < <=
+#   ? REASON                     can't be graded as written
+2026|1|Austen|ml Giants
+2026|1|Brendan|td Jalen Hurts
+2026|1|Joe K|ml Texans
+2026|1|John|td Ja'Marr Chase
+2026|1|Jake|tot o 44.5 Bills Texans
+2026|1|Nick|sp Bears -3
+2026|1|Chris|stat Ladd McConkey;recYds;>;50
+2026|1|Justin|sp Steelers -6.5
+2026|1|Steve|td Derrick Henry
+2026|1|Matt|td Chase Brown
+2026|2|Brendan|sp Eagles -6.5
+2026|2|Joe K|sp Patriots -4.5
+2026|2|John|td Saquon Barkley
+2026|2|Jake|td Justin Jefferson
+2026|2|Nick|sp Broncos -2.5
+2026|2|Chris|sp Panthers -2.5
+2026|2|Michael|sp Buccaneers -8
+2026|2|Evan|td Derrick Henry
+2026|2|Justin|ml Chiefs
+2026|2|Steve|td Bijan Robinson
+2026|2|Matt|tot o - Cowboys Commanders
+2026|3|Austen|sp Lions -7
+2026|3|Brendan|sp Chiefs -10
+2026|3|Joe K|sp Seahawks -7.5
+2026|3|John|ml Bengals
+2026|3|Jake|tot u 49.5 Lions Jets
+2026|3|Nick|sp Panthers -2.5
+2026|3|Chris|? no yardage line given
+2026|3|Michael|sp Bills -7
+2026|3|Evan|stat Sam Darnold;passYds;>;220
+2026|3|Justin|ml Texans
+2026|3|Steve|td Derrick Henry
+2026|3|Matt|td Jaxon Smith-Njigba
+2026|4|Austen|ml Broncos
+2026|4|Joe K|tot o - Jets Bears
+2026|4|John|td Parker Washington
+2026|4|Jake|td Jaxon Smith-Njigba
+2026|4|Nick|tot o 44.5 Giants Cardinals
+2026|4|Michael|sp Packers -3.5
+2026|4|Evan|sp Bills -7
+2026|4|Justin|ml Rams
+2026|4|Steve|td Derrick Henry
+2026|4|Matt|tot o - Cowboys Texans
+2026|5|Joe K|sp Broncos -3.5
+2026|5|John|td Jameson Williams
+2026|5|Jake|tot o 41.5 Broncos Chargers
+2026|5|Nick|stat Carnell Tate;recYds;>;50
+2026|5|Michael|sp Patriots -3.5
+2026|5|Evan|tot u 38.5 Jets Browns
+2026|5|Justin|td Nico Collins
+2026|5|Matt|tot o - Lions Cardinals
+2026|6|Austen|ml Giants
+2026|6|Brendan|ml Chiefs
+2026|6|Joe K|sp Colts -6.5
+2026|6|John|ml Panthers
+2026|6|Jake|ml Steelers
+2026|6|Nick|? no passing-yards line given
+2026|6|Michael|sp Patriots -7.5
+2026|6|Evan|ml Bears
+2026|6|Justin|td Najee Harris
+2026|6|Steve|td Derrick Henry
+2026|6|Matt|td Chuba Hubbard
+2025|1|Austen|ml Lions
+2025|1|Brendan|dst Broncos
+2025|1|Joe K|sp Jaguars -3.5
+2025|1|John|td James Conner
+2025|1|Jake|? not sure which quarterback "Bo rock O Ballma" is
+2025|1|Nick|stat Jayden Daniels;rushYds;<;42.5
+2025|1|Chris|sp Giants 7
+2025|1|Michael|td Stefon Diggs
+2025|1|Evan|tot u 44 Raiders Patriots
+2025|1|Justin|td Jahmyr Gibbs
+2025|1|Steve|td Derrick Henry
+2025|1|Matt|td Bucky Irving
+2025|2|Austen|sp Bills -5.5
+2025|2|Brendan|ftd CeeDee Lamb
+2025|2|Joe K|sp Patriots -1.5
+2025|2|John|stat CeeDee Lamb;recYds;>;80
+2025|2|Jake|sp Steelers -3
+2025|2|Nick|sp Broncos -2.5
+2025|2|Chris|stat Jared Goff;passTD;>=;2
+2025|2|Michael|tot o 46.5 Bills Jets
+2025|2|Evan|sp Buccaneers 2.5
+2025|2|Justin|td Jahmyr Gibbs
+2025|2|Steve|td Derrick Henry
+2025|2|Matt|td Chase Brown
+2025|3|Brendan|sp Eagles -3
+2025|3|Joe K|sp Chiefs -6
+2025|3|John|sp Buccaneers -6.5
+2025|3|Jake|sp Falcons -5.5
+2025|3|Nick|sp Chargers -2.5
+2025|3|Chris|ml Texans
+2025|3|Michael|ml Patriots
+2025|3|Evan|sp Colts -5.5
+2025|3|Justin|td Emeka Egbuka
+2025|3|Steve|td Derrick Henry
+2025|3|Matt|stat Tyler Warren;recYds;>=;50
+2025|4|Brendan|sp Lions -2.5
+2025|4|Joe K|sp Chargers -6
+2025|4|John|stat Josh Jacobs;rushYds;>;70
+2025|4|Jake|stat Josh Allen;passYds;>=;220
+2025|4|Nick|stat Jaxson Dart;rushYds;>;40
+2025|4|Chris|sp Ravens -2.5
+2025|4|Justin|ml Bears
+2025|4|Steve|td Derrick Henry
+2025|4|Matt|tot o - Cowboys Packers
+2025|5|Joe K|sp Dolphins -1.5
+2025|5|John|sp Eagles -4.5
+2025|5|Jake|tot o 48.5 Cowboys Jets
+2025|5|Nick|stat Cam Skattebo;rec;>=;3
+2025|5|Chris|td David Montgomery
+2025|5|Evan|tot o 36.5 Vikings Browns
+2025|5|Justin|td De'Von Achane
+2025|5|Steve|td Derrick Henry
+2025|5|Matt|td Garrett Wilson
+2025|6|Austen|ml Lions
+2025|6|Joe K|sp Cowboys -3
+2025|6|John|ml Buccaneers
+2025|6|Jake|sp Seahawks -1.5
+2025|6|Nick|stat Tyler Warren;rec;>=;5
+2025|6|Chris|sp Patriots -3.5
+2025|6|Evan|sp Steelers -4.5
+2025|6|Justin|td Ladd McConkey
+2025|6|Steve|td Derrick Henry
+2025|6|Matt|tot o - Cowboys
+2025|7|Joe K|sp Broncos -7.5
+2025|7|John|ml Panthers
+2025|7|Jake|sp Patriots -6.5
+2025|7|Nick|td Rashee Rice
+2025|7|Chris|stat Kendrick Bourne;recYds;>=;50
+2025|7|Evan|sp Eagles -1.5
+2025|7|Justin|td Jaxon Smith-Njigba
+2025|7|Steve|td Travis Kelce
+2025|7|Matt|tot o - Cowboys
+2025|8|Austen|sp Bengals -5.5
+2025|8|Brendan|td Bijan Robinson
+2025|8|Joe K|tot o 51.5 Broncos Cowboys
+2025|8|John|sp Bills -7
+2025|8|Jake|tot o - Eagles Giants
+2025|8|Nick|stat Drake Maye;passTD;>=;2
+2025|8|Chris|sp Bears 2.5
+2025|8|Evan|td Tee Higgins
+2025|8|Justin|td De'Von Achane
+2025|8|Steve|td Derrick Henry
+2025|8|Matt|td Tyler Warren
+2025|9|Austen|ml Broncos
+2025|9|Brendan|td Bijan Robinson
+2025|9|Joe K|sp Patriots -4.5
+2025|9|John|td Jahmyr Gibbs
+2025|9|Jake|tot o 45.5 Patriots Falcons
+2025|9|Chris|td Kimani Vidal
+2025|9|Michael|ml Chiefs
+2025|9|Evan|td Christian McCaffrey
+2025|9|Justin|td Jaxon Smith-Njigba
+2025|9|Steve|sp Colts -3.5
+2025|9|Matt|ml Giants
+2025|10|Brendan|tot o 47.5 Patriots Buccaneers
+2025|10|Joe K|sp Texans 1.5
+2025|10|John|td TreVeyon Henderson
+2025|10|Jake|tot o - Patriots Buccaneers
+2025|10|Nick|? not sure which player "Jettas" is
+2025|10|Evan|sp Bills -9
+2025|10|Justin|td Jaxon Smith-Njigba
+2025|10|Steve|td Derrick Henry
+2025|10|Matt|sp Panthers -5.5
+2025|11|Austen|ml Bears
+2025|11|Brendan|sp Broncos 4.5
+2025|11|Joe K|sp Chargers -3
+2025|11|John|sp Lions 2.5
+2025|11|Jake|tot o 46.5 Bills Buccaneers
+2025|11|Nick|tot o 42.5 Giants Packers
+2025|11|Chris|td Jaxon Smith-Njigba
+2025|11|Evan|tot o 48 Steelers Bengals
+2025|11|Justin|stat Jameis Winston;int;>=;2
+2025|11|Steve|stat Joe Flacco;passYds;>=;270
+2025|11|Matt|td Saquon Barkley
+2025|12|Austen|stat Amon-Ra St. Brown;recYds;>;78.5
+2025|12|Brendan|td Jalen Hurts
+2025|12|Joe K|sp Chiefs -3.5
+2025|12|John|tot u 36.5 Raiders Browns
+2025|12|Jake|tot o 41.5 Vikings Packers
+2025|12|Nick|tot u 50.5 Colts Chiefs
+2025|12|Chris|stat Drake Maye;passTD;>=;2
+2025|12|Michael|ml Patriots
+2025|12|Evan|td Jaxon Smith-Njigba
+2025|12|Justin|td Jameis Winston
+2025|12|Steve|td Derrick Henry
+2025|12|Matt|sp Raiders -4
+2025|13|Austen|sp Buccaneers -3.5
+2025|13|Brendan|sp Bills -2.5
+2025|13|Joe K|sp Browns 5.5
+2025|13|John|ml Texans
+2025|13|Jake|tot o 45.5 Bills Steelers
+2025|13|Nick|stat Christian McCaffrey;rec;>=;5
+2025|13|Michael|sp Patriots -7
+2025|13|Evan|sp Jaguars -5.5
+2025|13|Justin|td De'Von Achane
+2025|13|Steve|td Christian McCaffrey
+2025|13|Matt|ml Dolphins
+2025|14|Evan|sp Seahawks -6.5
+2025|14|Steve|td Derrick Henry

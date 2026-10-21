@@ -1,0 +1,25 @@
+name: Grade weekly bets
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Grade every pick against ESPN results
+        run: node scripts/grade.js data/bet-specs.txt data/bet-grades.json
+      - name: Save the grades
+        run: |
+          git config user.name "corknpork bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/bet-grades.json
+          git diff --cached --quiet || git commit -m "Bet grades $(date -u +%Y-%m-%d)"
+          git push
