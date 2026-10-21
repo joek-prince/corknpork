@@ -38,10 +38,21 @@ jobs:
       - name: Pull the weekly bet doc
         run: python3 scripts/bets.py
 
-      - name: Compute stats and build the page
+      - name: Compute stats
+        run: python3 scripts/compute.py data/league.json build/results.json
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Draw the link-preview card and icons
+        continue-on-error: true   # the page still builds (without a preview image) if this fails
         run: |
-          python3 scripts/compute.py data/league.json build/results.json
-          python3 scripts/build.py build/results.json _site/index.html
+          python -m pip install --quiet pillow
+          python scripts/og.py build/results.json _site
+
+      - name: Build the page
+        run: python3 scripts/build.py build/results.json _site/index.html
 
       - name: Save the data snapshot
         if: github.event_name != 'push'

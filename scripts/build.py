@@ -2,9 +2,11 @@
 
 Usage: python3 scripts/build.py build/results.json _site/index.html
 """
+import hashlib
 import html
 import json
 import os
+import re
 import sys
 
 src = sys.argv[1] if len(sys.argv) > 1 else 'build/results.json'
@@ -20,6 +22,14 @@ elif R['doneWeeks'] == 0:
 else:
     nxt = f", Week {R['previewWeek']} preview" if R.get('previewWeek') else ''
     desc = f"Week {R['doneWeeks']} recap{nxt}, the weekly bet and every record since {first}."
+
+# link-preview card from scripts/og.py; the version busts iMessage/Slack caches when the card changes
+og = os.path.join(os.path.dirname(dst) or '.', 'og.png')
+if os.path.exists(og):
+    ver = hashlib.sha1(open(og, 'rb').read()).hexdigest()[:10]
+    tpl = tpl.replace('__OG_VER__', ver).replace('__OG_ALT__', html.escape(f"Cork n' Pork Hall of Fame. {desc}", quote=True))
+else:
+    tpl = re.sub(r'<!--og-image-->.*?<!--/og-image-->\n?', '', tpl, flags=re.S)
 
 data = json.dumps(R, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 page = tpl.replace('__OG_DESC__', html.escape(desc, quote=True)).replace('__DATA__', data)
