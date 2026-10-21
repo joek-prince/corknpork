@@ -349,7 +349,7 @@ function renderWeek(){
     tile('High score', f1(A.high.v), tName(A.high.tm), A.high.tm, true),
     tile('Low score', f1(A.low.v), `<b>${esc(tm(A.low.tm).team)}</b><small>${esc(tm(A.low.tm).owner)}${lowBench > 0.05 ? ` · left ${f1(lowBench)} on the bench` : ''}</small>`, A.low.tm),
     tile('Blowout', '+' + f1(A.blowout.wp - A.blowout.lp), `<b>${esc(tm(A.blowout.w).team)}</b><small>beat ${esc(tm(A.blowout.l).team)}, ${f2(A.blowout.wp)} to ${f2(A.blowout.lp)}</small>`, A.blowout.w),
-    tile('Nail-biter', '+' + f2(A.close.wp - A.close.lp), `<b>${esc(tm(A.close.w).team)}</b><small>beat ${esc(tm(A.close.l).team)}, ${f2(A.close.wp)} to ${f2(A.close.lp)}</small>`, A.close.w),
+    tile('Ass-clencher', '+' + f2(A.close.wp - A.close.lp), `<b>${esc(tm(A.close.w).team)}</b><small>beat ${esc(tm(A.close.l).team)}, ${f2(A.close.wp)} to ${f2(A.close.lp)}</small>`, A.close.w),
     tile('Top player', f1(A.mvp.v), `<b>${esc(A.mvp.player)}</b><small>${esc(tm(A.mvp.tm).team)}</small>`, A.mvp.tm),
     tile('Bench regret', f1(A.bench.v), `<b>${esc(tm(A.bench.tm).team)}</b><small>Left ${f1(A.bench.v)} on the bench, including ${esc(A.bench.player)} (${f1(A.bench.pv)})</small>`, A.bench.tm),
     tile('Best lineup call', f1(A.manager.eff) + '%', `<b>${esc(tm(A.manager.tm).team)}</b><small>${A.manager.perfect ? 'Started the best possible lineup' : 'of the best possible score'}${A.manager.res === 'L' ? ', and still lost' : A.manager.res === 'W' ? ' and won' : ''}</small>`, A.manager.tm),
