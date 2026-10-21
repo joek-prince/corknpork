@@ -10,6 +10,7 @@ anything above the first year line belongs to the current season. A ✅ or ❌
 anywhere in a pick grades it; ➖ marks a push.
 """
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -138,7 +139,10 @@ def main():
                 raise ValueError('the doc came back without any pick tables')
             open(MD_PATH, 'w').write(md)
         except Exception as e:  # keep the last good copy rather than breaking the site
-            print(f'Could not download the bet doc ({e}); using the last saved copy.')
+            msg = f"Couldn't download the bet doc ({e}), so the Weekly Bet tab is showing the last saved copy. Check the doc is still shared by link."
+            print(msg)
+            os.makedirs('build', exist_ok=True)
+            open('build/alerts.txt', 'a').write(msg + '\n')
     md = open(MD_PATH).read()
     current = json.load(open(LEAGUE_PATH))['current']
     seasons = parse(md, current)

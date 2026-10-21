@@ -8,12 +8,18 @@ const S2 = (process.env.ESPN_S2 || '').trim();
 const SWID = (process.env.SWID || '').trim();
 const LEAGUE_ID = process.env.LEAGUE_ID || '91427782';
 
+// print a problem and keep it in build/alerts.txt for the Slack alert
+function alert(msg) {
+  console.error(msg);
+  try { fs.mkdirSync('build', { recursive: true }); fs.appendFileSync('build/alerts.txt', msg + '\n'); } catch (e) { /* best effort */ }
+}
+
 if (!S2 || !SWID) {
   if (process.env.ALLOW_STALE === '1') {
     console.log('ESPN_S2 / SWID secrets are not set, so the site is built from the last saved data.');
     process.exit(0);
   }
-  console.error('ESPN_S2 and SWID secrets are missing. Add them under Settings > Secrets and variables > Actions.');
+  alert('ESPN_S2 and SWID secrets are missing. Add them under Settings > Secrets and variables > Actions.');
   process.exit(1);
 }
 
@@ -45,4 +51,4 @@ async function getJSON(url, headers = {}) {
   fs.mkdirSync(require('path').dirname(out), { recursive: true });
   fs.writeFileSync(out, JSON.stringify(D) + '\n');
   console.log(`Saved ${out}: season ${D.current}, ${D.doneWeeks} weeks complete, ${Object.keys(D.seasons).length} seasons.`);
-})().catch(e => { console.error(e.message || e); process.exit(1); });
+})().catch(e => { alert(e.message || String(e)); process.exit(1); });

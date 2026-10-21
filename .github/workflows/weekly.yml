@@ -4,7 +4,12 @@ on:
   schedule:
     - cron: '0 11 * * 2'   # Tuesday 11:00 UTC: after Monday Night Football
     - cron: '0 20 * * 4'   # Thursday 20:00 UTC: fresh projections and bet picks before kickoff
-  workflow_dispatch: {}    # "Run workflow" button for a manual refresh
+  workflow_dispatch:       # "Run workflow" button for a manual refresh
+    inputs:
+      test_alert:
+        description: Also send a test message to Slack
+        type: boolean
+        default: false
   push:
     branches: [main]
 
@@ -20,6 +25,14 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:  # read by the alert job
+      espn: ${{ steps.espn.outcome }}
+      bets: ${{ steps.bets.outcome }}
+      compute: ${{ steps.compute.outcome }}
+      card: ${{ steps.card.outcome }}
+      page: ${{ steps.page.outcome }}
+      save: ${{ steps.save.outcome }}
+      alerts: ${{ steps.alerts.outputs.text }}
     steps:
       - uses: actions/checkout@v6
 
@@ -28,6 +41,7 @@ jobs:
           node-version: 22
 
       - name: Pull league data from ESPN
+        id: espn
         env:
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           SWID: ${{ secrets.SWID }}
@@ -36,9 +50,11 @@ jobs:
         run: node scripts/fetch.js data/league.json
 
       - name: Pull the weekly bet doc
+        id: bets
         run: python3 scripts/bets.py
 
       - name: Compute stats
+        id: compute
         run: python3 scripts/compute.py data/league.json build/results.json
 
       - uses: actions/setup-python@v6
@@ -46,15 +62,18 @@ jobs:
           python-version: '3.12'
 
       - name: Draw the link-preview card and icons
+        id: card
         continue-on-error: true   # the page still builds (without a preview image) if this fails
         run: |
           python -m pip install --quiet pillow
           python scripts/og.py build/results.json _site
 
       - name: Build the page
+        id: page
         run: python3 scripts/build.py build/results.json _site/index.html
 
       - name: Save the data snapshot
+        id: save
         if: github.event_name != 'push'
         run: |
           git config user.name "corknpork bot"
@@ -67,6 +86,15 @@ jobs:
         with:
           path: _site
 
+      - name: Collect anything worth flagging
+        id: alerts
+        if: always()
+        run: |
+          if [ "${{ steps.card.outcome }}" = failure ]; then
+            mkdir -p build && echo "The link-preview card didn't draw this time, so the site went out without it." >> build/alerts.txt
+          fi
+          { echo 'text<<END_OF_ALERTS'; cat build/alerts.txt 2>/dev/null || true; echo 'END_OF_ALERTS'; } >> "$GITHUB_OUTPUT"
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -76,3 +104,24 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  alert:  # posts to Slack when something breaks (needs the SLACK_WEBHOOK_URL secret)
+    needs: [build, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Tell Slack about problems
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+          STEP_ESPN: ${{ needs.build.outputs.espn }}
+          STEP_BETS: ${{ needs.build.outputs.bets }}
+          STEP_COMPUTE: ${{ needs.build.outputs.compute }}
+          STEP_PAGE: ${{ needs.build.outputs.page }}
+          STEP_SAVE: ${{ needs.build.outputs.save }}
+          ALERTS: ${{ needs.build.outputs.alerts }}
+          TEST_ALERT: ${{ inputs.test_alert }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/notify.py
