@@ -219,9 +219,9 @@
   "y": 2026,
   "wk": 3,
   "who": "Chris",
-  "bet": "? no yardage line given",
-  "res": "n/a",
-  "note": "no yardage line given"
+  "bet": "stat Jadarian Price;rushYds;>;-",
+  "res": "miss",
+  "note": "15 rushYds; no line written; called miss by hand"
  },
  {
   "y": 2026,
@@ -451,9 +451,9 @@
   "y": 2026,
   "wk": 6,
   "who": "Nick",
-  "bet": "? no passing-yards line given",
-  "res": "n/a",
-  "note": "no passing-yards line given"
+  "bet": "stat Kirk Cousins;passYds;>;-",
+  "res": "hit",
+  "note": "313 passYds; no line written; called hit by hand"
  },
  {
   "y": 2026,
@@ -531,9 +531,9 @@
   "y": 2025,
   "wk": 1,
   "who": "Jake",
-  "bet": "? not sure which quarterback \"Bo rock O Ballma\" is",
-  "res": "n/a",
-  "note": "not sure which quarterback \"Bo rock O Ballma\" is"
+  "bet": "stat Brock Purdy;passYds;>=;210",
+  "res": "hit",
+  "note": "277 passYds (needed >= 210)"
  },
  {
   "y": 2025,
@@ -844,8 +844,8 @@
   "wk": 4,
   "who": "Matt",
   "bet": "tot o - Cowboys Packers",
-  "res": "n/a",
-  "note": "no line given and no closing total found; Packers 40, Cowboys 40"
+  "res": "hit",
+  "note": "80 points vs 46.5 (closing total); Packers 40, Cowboys 40"
  },
  {
   "y": 2025,
@@ -996,8 +996,8 @@
   "wk": 6,
   "who": "Matt",
   "bet": "tot o - Cowboys",
-  "res": "n/a",
-  "note": "no line given and no closing total found; Cowboys 27, Panthers 30"
+  "res": "hit",
+  "note": "57 points vs 45.5 (closing total); Cowboys 27, Panthers 30"
  },
  {
   "y": 2025,
@@ -1068,8 +1068,8 @@
   "wk": 7,
   "who": "Matt",
   "bet": "tot o - Cowboys",
-  "res": "n/a",
-  "note": "no line given and no closing total found; Commanders 22, Cowboys 44"
+  "res": "hit",
+  "note": "66 points vs 54.5 (closing total); Commanders 22, Cowboys 44"
  },
  {
   "y": 2025,
@@ -1108,8 +1108,8 @@
   "wk": 8,
   "who": "Jake",
   "bet": "tot o - Eagles Giants",
-  "res": "n/a",
-  "note": "no line given and no closing total found; Giants 20, Eagles 38"
+  "res": "hit",
+  "note": "58 points vs 43.5 (closing total); Giants 20, Eagles 38"
  },
  {
   "y": 2025,
@@ -1276,16 +1276,16 @@
   "wk": 10,
   "who": "Jake",
   "bet": "tot o - Patriots Buccaneers",
-  "res": "n/a",
-  "note": "no line given and no closing total found; Patriots 28, Buccaneers 23"
+  "res": "hit",
+  "note": "51 points vs 48.5 (closing total); Patriots 28, Buccaneers 23"
  },
  {
   "y": 2025,
   "wk": 10,
   "who": "Nick",
-  "bet": "? not sure which player \"Jettas\" is",
+  "bet": "? not sure which player \"Jettas\" is (Ashton Jeanty and Breece Hall both scored that week)",
   "res": "n/a",
-  "note": "not sure which player \"Jettas\" is"
+  "note": "not sure which player \"Jettas\" is (Ashton Jeanty and Breece Hall both scored that week)"
  },
  {
   "y": 2025,
