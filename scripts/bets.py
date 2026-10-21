@@ -107,7 +107,7 @@ def parse(md, current_season):
             if not who:
                 continue
             res = 'hit' if '✅' in pick else ('miss' if '❌' in pick else None)
-            text = re.sub(r'[✅❌]', '', pick).strip()
+            text = re.sub(r'\s+', ' ', re.sub(r'[✅❌]', '', pick)).strip()
             item = {'who': who, 'pick': text}
             if text:
                 kind, subj = classify(text)
