@@ -170,7 +170,7 @@
 2025|10|Joe K|sp Texans 1.5
 2025|10|John|td TreVeyon Henderson
 2025|10|Jake|tot o - Patriots Buccaneers
-2025|10|Nick|? not sure which player "Jettas" is (Ashton Jeanty and Breece Hall both scored that week)
+2025|10|Nick|td Justin Jefferson
 2025|10|Evan|sp Bills -9
 2025|10|Justin|td Jaxon Smith-Njigba
 2025|10|Steve|td Derrick Henry
