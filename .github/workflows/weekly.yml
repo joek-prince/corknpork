@@ -31,8 +31,8 @@ jobs:
         env:
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           SWID: ${{ secrets.SWID }}
-          # A code push may build from the saved data if the secrets aren't set yet; scheduled runs must fetch.
-          ALLOW_STALE: ${{ github.event_name == 'push' && '1' || '0' }}
+          # Pushes and manual runs may build from the saved data if the secrets aren't set yet; scheduled runs must fetch.
+          ALLOW_STALE: ${{ github.event_name != 'schedule' && '1' || '0' }}
         run: node scripts/fetch.js data/league.json
 
       - name: Pull the weekly bet doc
