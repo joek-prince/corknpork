@@ -97,6 +97,13 @@ async function grade(y, wk, bet) {
       const sum = await summary(g.id);
       const pc = (sum.pickcenter || []).find(p => p.overUnder != null);
       line = pc ? pc.overUnder : g.total;
+      if (line == null) {  // older games drop pickcenter; the core API still has the pregame line
+        try {
+          const o = await getJSON(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/${g.id}/competitions/${g.id}/odds`);
+          const pre = (o.items || []).find(i => i.overUnder != null && !/live/i.test((i.provider && i.provider.name) || ''));
+          if (pre) line = pre.overUnder;
+        } catch (e) { /* fall through */ }
+      }
       src = ' (closing total)';
       if (line == null) return { res: 'n/a', note: `no line given and no closing total found; ${gameTxt(g)}` };
     }
@@ -129,7 +136,9 @@ async function grade(y, wk, bet) {
     const f = await findPlayer(y, wk, who);
     if (!f) return { res: 'n/a', note: `${who} didn't play in week ${wk}` };
     const key = { passYds: 'passingYards', rushYds: 'rushingYards', recYds: 'receivingYards', rec: 'receptions', passTD: 'passingTouchdowns', int: 'interceptions' }[stat];
-    const v = num(f.line.s[key]), line = parseFloat(lineS);
+    const v = num(f.line.s[key]);
+    if (lineS === '-') return { res: 'n/a', note: `${v} ${stat}; no line written` };
+    const line = parseFloat(lineS);
     return { res: cmp(v, op, line) ? 'hit' : 'miss', note: `${v} ${stat} (needed ${op} ${line})` };
   }
   return { res: 'n/a', note: `unknown bet type "${kind}"` };
@@ -139,9 +148,13 @@ async function grade(y, wk, bet) {
   const [specPath = 'data/bet-specs.txt', outPath = 'data/bet-grades.json'] = process.argv.slice(2);
   const specs = fs.readFileSync(specPath, 'utf8').split('\n').filter(l => l.trim() && !l.startsWith('#')).map(l => l.split('|'));
   const out = [];
-  for (const [y, wk, who, bet] of specs) {
-    try { out.push({ y: +y, wk: +wk, who, bet, ...(await grade(+y, +wk, bet)) }); }
-    catch (e) { out.push({ y: +y, wk: +wk, who, bet, res: 'n/a', note: 'error: ' + e.message }); }
+  for (const [y, wk, who, bet, call] of specs) {
+    let r;
+    try { r = await grade(+y, +wk, bet); }
+    catch (e) { r = { res: 'n/a', note: 'error: ' + e.message }; }
+    // a 5th field is a hand call for a pick the data can't settle on its own (e.g. no line written)
+    if (call && r.res === 'n/a') r = { res: call.trim(), note: `${r.note}; called ${call.trim()} by hand` };
+    out.push({ y: +y, wk: +wk, who, bet, ...r });
   }
   fs.writeFileSync(outPath, JSON.stringify(out, null, 1) + '\n');
   const c = out.reduce((m, r) => (m[r.res] = (m[r.res] || 0) + 1, m), {});

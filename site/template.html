@@ -216,6 +216,7 @@ select{min-height:44px;font-family:var(--font-data);font-weight:600;font-size:16
 .grid td.p{white-space:normal;min-width:118px;max-width:150px;text-align:left;font-family:var(--font-body);font-size:13px;line-height:1.3;vertical-align:top}
 .grid td.p.hit{background:color-mix(in srgb,var(--win) 18%,var(--surface))}
 .grid td.p.miss{background:color-mix(in srgb,var(--loss) 15%,var(--surface))}
+.grid td.p.push{background:color-mix(in srgb,var(--muted) 14%,var(--surface))}
 .grid td.p.none{color:var(--muted)}
 details.how{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:13.5px}
 details.how summary{cursor:pointer;font-weight:600;color:var(--ink);min-height:32px}
@@ -452,7 +453,7 @@ function myWeek(){
   const B = R.bets;
   if (B && +B.latest.y === YR) {
     const wkB = B.seasons[B.latest.y].at(-1), pk = wkB.picks.find(x => x.o === ME);
-    bet = `<div><span class="k">Bet, week ${wkB.wk}</span><span class="v">${pk && pk.pick ? esc(pk.pick) : 'No pick yet'}</span><small>${pk && pk.r ? (pk.r === 'hit' ? 'Hit' : 'Missed') : pk && pk.pick ? (pk.t || '') : 'Add it to the bet doc'}</small></div>`;
+    bet = `<div><span class="k">Bet, week ${wkB.wk}</span><span class="v">${pk && pk.pick ? esc(pk.pick) : 'No pick yet'}</span><small>${pk && pk.r ? ({ hit: 'Hit', miss: 'Missed', push: 'Push' }[pk.r] || '') : pk && pk.pick ? (pk.t || '') : 'Add it to the bet doc'}</small></div>`;
   }
   return `<section class="mine" aria-label="Your week"><h2>${esc(t.team)}</h2><div class="mine-grid">${last}${rank}${next}${bet}</div></section>`;
 }
@@ -478,10 +479,10 @@ function renderBets(){
   const B = R.bets;
   if (!B) { el.innerHTML = blk('Weekly bet', '', '<p class="note">The bet doc could not be read on the last update.</p>'); return; }
   const chipT = t => t ? `<span class="chip">${esc(t)}</span>` : '';
-  const chipR = r => r === 'hit' ? '<span class="chip w">Hit</span>' : r === 'miss' ? '<span class="chip l">Miss</span>' : '';
+  const chipR = r => r === 'hit' ? '<span class="chip w">Hit</span>' : r === 'miss' ? '<span class="chip l">Miss</span>' : r === 'push' ? '<span class="chip">Push</span>' : '';
   const statusTxt = wk => wk.status === 'bust' ? `<span class="chip l">Busted</span> <span>Missed by ${wk.missedBy.map(esc).join(', ')}</span>`
     : wk.status === 'hit' ? '<span class="chip w">Parlay hit</span> <span>Every leg cashed</span>'
-    : `<span class="chip">Not graded</span> <span>${wk.hits + wk.misses ? `${wk.hits} hit, ${wk.misses} missed so far` : 'No results marked in the doc yet'}</span>`;
+    : `<span class="chip">Not graded</span> <span>${wk.hits + wk.misses + (wk.pushes || 0) ? `${wk.hits} hit, ${wk.misses} missed${wk.pushes ? `, ${wk.pushes} push${wk.pushes > 1 ? 'es' : ''}` : ''} so far` : 'No results marked in the doc yet'}</span>`;
   const L = B.latest, wkL = B.seasons[L.y].at(-1);
   const blanks = wkL.picks.filter(p => !p.pick).map(p => p.o);
   const latest = `<div class="status"><b>Week ${wkL.wk}, ${L.y}</b>${statusTxt(wkL)}</div>
@@ -506,14 +507,14 @@ function renderBets(){
     const cell = (wk, o) => { const p = wk.picks.find(x => x.o === o); if (!p || !p.pick) return '<td class="p none">–</td>';
       return `<td class="p ${p.r || ''}" title="${esc(p.pick)}">${esc(p.pick)}${p.r ? `<span class="sr"> (${p.r})</span>` : ''}</td>`; };
     const st = wk => wk.status === 'bust' ? '<span class="chip l">Bust</span>' : wk.status === 'hit' ? '<span class="chip w">Hit</span>' : '';
-    return blk(`${yr} week by week`, 'Green cells hit, red cells missed, plain cells have no result marked.',
+    return blk(`${yr} week by week`, 'Green cells hit, red cells missed, grey cells pushed, plain cells have no result marked.',
       `<div class="tbl-wrap"><table class="grid sticky1"><caption class="sr">Every pick in ${yr}</caption><thead><tr><th class="l" scope="col">Owner</th>${[...weeks].reverse().map(w => `<th class="l" scope="col">Wk ${w.wk} ${st(w)}</th>`).join('')}</tr></thead><tbody>${
         owners.map(o => `<tr ${dO(o)}><th class="l" scope="row"><b>${esc(o)}</b></th>${[...weeks].reverse().map(w => cell(w, o)).join('')}</tr>`).join('')
       }</tbody></table></div>`);
   }
   function draw(focus){
     const yrs = [...B.years, 'all'];
-    el.innerHTML = blk('Latest picks', `Pulled from the <a href="${esc(B.docUrl)}" target="_blank" rel="noopener">league bet doc</a>. Put ✅ or ❌ after a pick in the doc and it counts here on the next update. ${B.graded} of ${B.total} picks have a result so far.`, latest) +
+    el.innerHTML = blk('Latest picks', `Pulled from the <a href="${esc(B.docUrl)}" target="_blank" rel="noopener">league bet doc</a>. Put ✅ or ❌ (➖ for a push) after a pick in the doc and it counts here on the next update. ${B.graded} of ${B.total} picks have a result so far.`, latest) +
       `<div class="seg" role="group" aria-label="Season">${yrs.map(y => `<button type="button" aria-pressed="${y === yr}" data-y="${y}">${y === 'all' ? 'All seasons' : y}</button>`).join('')}</div>` +
       blk('Bet board', '"Picks" counts weeks with a pick out of weeks on the sheet. Go-to bet is the type each person picks most.', board()) +
       grid() +

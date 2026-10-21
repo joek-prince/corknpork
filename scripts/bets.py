@@ -7,7 +7,7 @@ Usage:
 The doc is a list of weeks, newest first. Each week is a two-column table of
 name | pick. A line that is just a year (e.g. **2025**) starts an older season;
 anything above the first year line belongs to the current season. A ✅ or ❌
-anywhere in a pick grades it.
+anywhere in a pick grades it; ➖ marks a push.
 """
 import json
 import re
@@ -106,8 +106,8 @@ def parse(md, current_season):
             pick = cells[1].strip()
             if not who:
                 continue
-            res = 'hit' if '✅' in pick else ('miss' if '❌' in pick else None)
-            text = re.sub(r'\s+', ' ', re.sub(r'[✅❌]', '', pick)).strip()
+            res = 'hit' if '✅' in pick else ('miss' if '❌' in pick else ('push' if '➖' in pick else None))
+            text = re.sub(r'\s+', ' ', re.sub(r'[✅❌➖]', '', pick)).strip()
             item = {'who': who, 'pick': text}
             if text:
                 kind, subj = classify(text)

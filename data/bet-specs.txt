@@ -9,6 +9,7 @@
 #   dst TEAM                     defense / special teams touchdown
 #   stat PLAYER;STAT;OP;LINE     STAT = passYds rushYds recYds rec passTD int; OP = > >= < <=
 #   ? REASON                     can't be graded as written
+#   LINE "-" in stat means no line was written; add a 5th field (hit|miss) to call it by hand
 2026|1|Austen|ml Giants
 2026|1|Brendan|td Jalen Hurts
 2026|1|Joe K|ml Texans
@@ -36,7 +37,7 @@
 2026|3|John|ml Bengals
 2026|3|Jake|tot u 49.5 Lions Jets
 2026|3|Nick|sp Panthers -2.5
-2026|3|Chris|? no yardage line given
+2026|3|Chris|stat Jadarian Price;rushYds;>;-|miss
 2026|3|Michael|sp Bills -7
 2026|3|Evan|stat Sam Darnold;passYds;>;220
 2026|3|Justin|ml Texans
@@ -65,7 +66,7 @@
 2026|6|Joe K|sp Colts -6.5
 2026|6|John|ml Panthers
 2026|6|Jake|ml Steelers
-2026|6|Nick|? no passing-yards line given
+2026|6|Nick|stat Kirk Cousins;passYds;>;-|hit
 2026|6|Michael|sp Patriots -7.5
 2026|6|Evan|ml Bears
 2026|6|Justin|td Najee Harris
@@ -75,7 +76,7 @@
 2025|1|Brendan|dst Broncos
 2025|1|Joe K|sp Jaguars -3.5
 2025|1|John|td James Conner
-2025|1|Jake|? not sure which quarterback "Bo rock O Ballma" is
+2025|1|Jake|stat Brock Purdy;passYds;>=;210
 2025|1|Nick|stat Jayden Daniels;rushYds;<;42.5
 2025|1|Chris|sp Giants 7
 2025|1|Michael|td Stefon Diggs
@@ -169,7 +170,7 @@
 2025|10|Joe K|sp Texans 1.5
 2025|10|John|td TreVeyon Henderson
 2025|10|Jake|tot o - Patriots Buccaneers
-2025|10|Nick|? not sure which player "Jettas" is
+2025|10|Nick|? not sure which player "Jettas" is (Ashton Jeanty and Breece Hall both scored that week)
 2025|10|Evan|sp Bills -9
 2025|10|Justin|td Jaxon Smith-Njigba
 2025|10|Steve|td Derrick Henry

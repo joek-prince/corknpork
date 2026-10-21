@@ -423,8 +423,9 @@ if os.path.exists(BETS):
             made = [p for p in picks if p['pick']]
             hits = sum(1 for p in made if p['r'] == 'hit')
             misses = sum(1 for p in made if p['r'] == 'miss')
-            status = 'bust' if misses else ('hit' if made and hits == len(made) else 'open')
-            wl.append({'wk': int(w), 'picks': picks, 'made': len(made), 'hits': hits, 'misses': misses, 'status': status,
+            pushes = sum(1 for p in made if p['r'] == 'push')
+            status = 'bust' if misses else ('hit' if made and hits and hits + pushes == len(made) else 'open')
+            wl.append({'wk': int(w), 'picks': picks, 'made': len(made), 'hits': hits, 'misses': misses, 'pushes': pushes, 'status': status,
                        'missedBy': [p['o'] for p in made if p['r'] == 'miss']})
         b_seasons[y] = wl
 
@@ -469,7 +470,7 @@ if os.path.exists(BETS):
                         subj[p['s']] += 1
                         subj_by.setdefault(p['s'], Counter())[p['o']] += 1
     total = sum(types.values())
-    graded = sum(wk['hits'] + wk['misses'] for wl in all_lists for wk in wl)
+    graded = sum(wk['hits'] + wk['misses'] + wk['pushes'] for wl in all_lists for wk in wl)
     years = sorted(b_seasons, key=int, reverse=True)
     latest_y = years[0]
     bets_out = {
