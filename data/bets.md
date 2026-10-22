@@ -167,7 +167,7 @@
 | Joe K | Texans \+1.5 ✅ |
 | John | Treveyon Henderson anytime TD ✅ |
 | Jake | pats bucs over ✅ |
-| Nick | Jettas ATTD |
+| Nick | Jettas ATTD ❌ |
 | Chris |  |
 | Michael |  |
 | Evan | bills \-9 ❌ |
