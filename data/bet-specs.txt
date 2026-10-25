@@ -72,6 +72,18 @@
 2026|6|Justin|td Najee Harris
 2026|6|Steve|td Derrick Henry
 2026|6|Matt|td Chuba Hubbard
+2026|7|Austen|ml Chiefs
+2026|7|Brendan|ml Texans
+2026|7|Joe K|ml Broncos
+2026|7|John|ml Panthers
+2026|7|Jake|stat Jaxon Smith-Njigba;recYds;>=;100
+2026|7|Nick|tot o 44.5 Buccaneers Panthers
+2026|7|Chris|sp Giants 10
+2026|7|Michael|sp Jets -3.5
+2026|7|Evan|sp Lions -3.5
+2026|7|Justin|sp 49ers -2.5
+2026|7|Steve|td Derrick Henry
+2026|7|Matt|td Josh Jacobs
 2025|1|Austen|ml Lions
 2025|1|Brendan|dst Broncos
 2025|1|Joe K|sp Jaguars -3.5
