@@ -89,6 +89,21 @@ async function buildData(getJSON, opts) {
     wkRaw[w] = teams;
   }
 
+  // ---- this week's NFL games (public scoreboard): which teams are done, playing, or still to come ----
+  // ESPN's NFL team ids match the fantasy proTeamId, so the live starters above can be matched to a game.
+  let nfl = null;
+  try {
+    const sb = await getJSON(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=${cur}&seasontype=2&week=${lastWeek}&limit=40`);
+    nfl = {
+      wk: lastWeek, asOf: new Date().toISOString(),
+      games: (sb.events || []).map(e => {
+        const c = e.competitions[0], st = c.status || {}, side = h => c.competitors.find(x => x.homeAway === h) || {};
+        return [+side('home').team.id, +side('away').team.id, (st.type || {}).state || 'pre', e.date, e.shortName,
+          +(side('home').score || 0), +(side('away').score || 0), (st.type || {}).shortDetail || ''];
+      })
+    };
+  } catch (e) { /* the site still builds without the live board */ }
+
   // ---- draft summaries ----
   const draft = {};
   for (const y of seasons) {
@@ -151,6 +166,6 @@ async function buildData(getJSON, opts) {
     };
   }
   return { league: H[cur].name, asOf: opts.today, curWeek: previewWeek || doneWeeks + 1, owners, seasons: out, draft, wk,
-    current: cur, doneWeeks, previewWeek };
+    current: cur, doneWeeks, previewWeek, nfl };
 }
 if (typeof module !== 'undefined') module.exports = { buildData };
