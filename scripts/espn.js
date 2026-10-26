@@ -129,7 +129,7 @@ async function buildData(getJSON, opts) {
         ? { a: r1(o.total), p: r1(projSum), o: r1(opt(o.e)), top: [nm(top), r1(top ? top[2] : 0)], bench: [nm(topB), r1(topB ? topB[2] : 0)] }
         : { p: r1(projSum), topP: [nm(topP), r1(topP ? topP[3] : 0)], inj,
             // in-progress week: live total and each starter as [name, NFL proTeamId, points so far, projected]
-            a: r1(o.total || 0), live: st.map(e => [nm(e), (pinfo[e[0]] || [])[2] || 0, e[2] || 0, e[3]]) };
+            a: r1(st.reduce((a, e) => a + (e[2] || 0), 0)), live: st.map(e => [nm(e), (pinfo[e[0]] || [])[2] || 0, e[2] || 0, e[3]]) };
     }
   }
 
