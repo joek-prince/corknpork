@@ -400,7 +400,7 @@ const av = (name, id) => {
 };
 const abbr = (name, id) => {
   const t = id != null ? tm(id) : null;
-  if (t && t.ab) return t.ab;
+  if (t && t.ab) return String(t.ab).toUpperCase();
   const w = String(name).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(x => x && !/^(the|of|and)$/i.test(x));
   return (w.length >= 2 ? w.slice(0, 4).map(x => x[0]).join('') : (w[0] || name).slice(0, 4)).toUpperCase();
 };
