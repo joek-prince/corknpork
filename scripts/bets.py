@@ -19,6 +19,7 @@ DOC_ID = '1hUcsOsBu0c2bVQbRWks86fwvyRXQGt_Ke1bnH_CHk0w'
 MD_PATH = 'data/bets.md'
 OUT_PATH = 'data/bets.json'
 LEAGUE_PATH = 'data/league.json'
+GRADES_PATH = 'data/bet-grades.json'  # written by scripts/grade.js; fills in picks the doc hasn't marked yet
 
 TEAMS = {
     'Cardinals': ['cardinals', 'cards', 'arizona', 'ari'], 'Falcons': ['falcons', 'atlanta', 'atl'],
@@ -146,6 +147,19 @@ def main():
     md = open(MD_PATH).read()
     current = json.load(open(LEAGUE_PATH))['current']
     seasons = parse(md, current)
+    # A ✅/❌ in the doc always wins; otherwise use the grader's call so results show up the night the games end.
+    filled = 0
+    if os.path.exists(GRADES_PATH):
+        graded = {(str(g['y']), str(g['wk']), g['who'].lower()): g['res'] for g in json.load(open(GRADES_PATH))
+                  if g.get('res') in ('hit', 'miss', 'push')}
+        for y, weeks in seasons.items():
+            for w, picks in weeks.items():
+                for p in picks:
+                    if p.get('pick') and p.get('res') is None and (y, w, p['who'].lower()) in graded:
+                        p['res'] = graded[(y, w, p['who'].lower())]
+                        filled += 1
+    if filled:
+        print(f'{filled} pick(s) graded from {GRADES_PATH} (not yet marked in the doc)')
     json.dump({'docId': DOC_ID, 'seasons': seasons}, open(OUT_PATH, 'w'), ensure_ascii=False, separators=(',', ':'))
     total = sum(len([p for p in ps if p['pick']]) for s in seasons.values() for ps in s.values())
     print(f'Saved {OUT_PATH}: {total} picks across ' + ', '.join(f'{y} ({len(w)} weeks)' for y, w in sorted(seasons.items())))
