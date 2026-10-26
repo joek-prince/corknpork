@@ -80,7 +80,7 @@ async function buildData(getJSON, opts) {
           const pe = x.playerPoolEntry || {}, pl = pe.player || {};
           const pj = (pl.stats || []).find(st => st.statSourceId === 1 && st.scoringPeriodId === w);
           const ac = (pl.stats || []).find(st => st.statSourceId === 0 && st.scoringPeriodId === w);
-          if (!pinfo[x.playerId]) pinfo[x.playerId] = [pl.fullName, pl.defaultPositionId];
+          if (!pinfo[x.playerId]) pinfo[x.playerId] = [pl.fullName, pl.defaultPositionId, pl.proTeamId || 0];
           return [x.playerId, x.lineupSlotId, ac ? r2(ac.appliedTotal) : (pe.appliedStatTotal != null ? r2(pe.appliedStatTotal) : 0), pj ? r2(pj.appliedTotal) : null, pl.injuryStatus || null];
         });
         teams[s.teamId] = { e, total: s.totalPoints };
@@ -127,7 +127,9 @@ async function buildData(getJSON, opts) {
       const inj = st.filter(e => e[4] && !['ACTIVE', 'NORMAL'].includes(e[4])).map(e => [nm(e), e[4]]);
       wk[w][tid] = +w <= doneWeeks
         ? { a: r1(o.total), p: r1(projSum), o: r1(opt(o.e)), top: [nm(top), r1(top ? top[2] : 0)], bench: [nm(topB), r1(topB ? topB[2] : 0)] }
-        : { p: r1(projSum), topP: [nm(topP), r1(topP ? topP[3] : 0)], inj };
+        : { p: r1(projSum), topP: [nm(topP), r1(topP ? topP[3] : 0)], inj,
+            // in-progress week: live total and each starter as [name, NFL proTeamId, points so far, projected]
+            a: r1(o.total || 0), live: st.map(e => [nm(e), (pinfo[e[0]] || [])[2] || 0, e[2] || 0, e[3]]) };
     }
   }
 
