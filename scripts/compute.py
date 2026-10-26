@@ -270,7 +270,8 @@ team_week = defaultdict(dict)
 for g in cur_games:
     for ow, tm, pts, oo, ot, op, res in sides(g):
         team_week[tm][g['wk']] = {'pts': pts, 'res': res}
-teams_cur = {tm: {'team': t[1], 'owner': OWN[t[2]], 'seed': t[4], 'w': t[5], 'l': t[6]} for tm, t in T.items()}
+teams_cur = {tm: {'team': t[1], 'owner': OWN[t[2]], 'seed': t[4], 'w': t[5], 'l': t[6],
+                  'ab': t[12] if len(t) > 12 else '', 'logo': t[13] if len(t) > 13 else ''} for tm, t in T.items()}
 cur_out = {'teams': teams_cur, 'standings': [], 'recap': [], 'awards': None, 'preview': [], 'weekMvps': []}
 
 if DONE_WEEKS >= 1:

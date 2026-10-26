@@ -28,6 +28,7 @@ async function buildData(getJSON, opts) {
     const members = (j.members || []).map(m => ({ id: m.id, fn: m.firstName, ln: m.lastName }));
     const teams = (j.teams || []).map(t => ({
       id: t.id, name: (t.name || ((t.location || '') + ' ' + (t.nickname || ''))).trim(), primary: t.primaryOwner,
+      abbrev: (t.abbrev || '').trim(), logo: /^https?:\/\//.test(t.logo || '') ? t.logo : '',
       rank: t.rankCalculatedFinal, seed: t.playoffSeed,
       w: t.record && t.record.overall.wins, l: t.record && t.record.overall.losses, tie: t.record && t.record.overall.ties,
       pf: t.record && t.record.overall.pointsFor, pa: t.record && t.record.overall.pointsAgainst,
@@ -158,7 +159,8 @@ async function buildData(getJSON, opts) {
     const S = H[y];
     out[y] = {
       reg: S.regWeeks, po: S.playoffTeams,
-      t: S.teams.map(t => [t.id, t.name.replace(/\s+/g, ' '), oi(t.primary), t.rank || 0, t.seed || 0, t.w, t.l, t.tie, r2(t.pf), r2(t.pa), t.moves ? t.moves.acq : 0, t.moves ? t.moves.trades : 0]),
+      // ...then the ESPN abbreviation and logo URL (added Oct 2026; older snapshots stop at index 11)
+      t: S.teams.map(t => [t.id, t.name.replace(/\s+/g, ' '), oi(t.primary), t.rank || 0, t.seed || 0, t.w, t.l, t.tie, r2(t.pf), r2(t.pa), t.moves ? t.moves.acq : 0, t.moves ? t.moves.trades : 0, t.abbrev, t.logo]),
       s: S.sch.map(m => [m[0], m[1], r2(m[2]), m[3], r2(m[4]),
         { HOME: 'H', AWAY: 'A', TIE: 'T', UNDECIDED: 'U' }[m[5]] || m[5],
         { NONE: 'N', WINNERS_BRACKET: 'W', LOSERS_CONSOLATION_LADDER: 'L', WINNERS_CONSOLATION_LADDER: 'C' }[m[6]] || m[6]]),
