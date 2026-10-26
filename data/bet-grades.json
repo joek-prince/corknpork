@@ -496,6 +496,102 @@
   "note": "1 TD (1 rushing)"
  },
  {
+  "y": 2026,
+  "wk": 7,
+  "who": "Austen",
+  "bet": "ml Chiefs",
+  "res": "miss",
+  "note": "Chiefs 3, Seahawks 20"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Brendan",
+  "bet": "ml Texans",
+  "res": "miss",
+  "note": "Giants 27, Texans 21"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Joe K",
+  "bet": "ml Broncos",
+  "res": "hit",
+  "note": "Broncos 30, Cardinals 16"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "John",
+  "bet": "ml Panthers",
+  "res": "miss",
+  "note": "Buccaneers 43, Panthers 13"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Jake",
+  "bet": "stat Jaxon Smith-Njigba;recYds;>=;100",
+  "res": "hit",
+  "note": "150 recYds (needed >= 100)"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Nick",
+  "bet": "tot o 44.5 Buccaneers Panthers",
+  "res": "hit",
+  "note": "56 points vs 44.5; Buccaneers 43, Panthers 13"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Chris",
+  "bet": "sp Giants 10",
+  "res": "hit",
+  "note": "Giants 27, Texans 21"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Michael",
+  "bet": "sp Jets -3.5",
+  "res": "miss",
+  "note": "Dolphins 28, Jets 25"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Evan",
+  "bet": "sp Lions -3.5",
+  "res": "miss",
+  "note": "Packers 17, Lions 20"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Justin",
+  "bet": "sp 49ers -2.5",
+  "res": "miss",
+  "note": "49ers 20, Falcons 29"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Steve",
+  "bet": "td Derrick Henry",
+  "res": "miss",
+  "note": "no TD; Bengals 35, Ravens 13"
+ },
+ {
+  "y": 2026,
+  "wk": 7,
+  "who": "Matt",
+  "bet": "td Josh Jacobs",
+  "res": "hit",
+  "note": "1 TD (1 receiving)"
+ },
+ {
   "y": 2025,
   "wk": 1,
   "who": "Austen",
