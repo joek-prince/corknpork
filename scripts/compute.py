@@ -399,6 +399,209 @@ if DONE_WEEKS >= 1:
 
     cur_out.update(standings=standings, recap=recap, awards=awards, preview=preview, weekMvps=week_mvps)
 
+# ---------- Ass Clenchers: the close games, written up ----------
+PRO = {1: 'ATL', 2: 'BUF', 3: 'CHI', 4: 'CIN', 5: 'CLE', 6: 'DAL', 7: 'DEN', 8: 'DET', 9: 'GB', 10: 'TEN', 11: 'IND', 12: 'KC',
+       13: 'LV', 14: 'LAR', 15: 'MIA', 16: 'MIN', 17: 'NE', 18: 'NO', 19: 'NYG', 20: 'NYJ', 21: 'PHI', 22: 'ARI', 23: 'PIT',
+       24: 'LAC', 25: 'SF', 26: 'SEA', 27: 'TB', 28: 'WSH', 29: 'CAR', 30: 'JAX', 33: 'BAL', 34: 'HOU'}
+CLENCH = 10.0  # a game decided by fewer points than this is an ass-clencher
+WHEN = 'the rest of the week'  # set below once the live board knows which games are left
+
+
+def fn(tm):
+    """owner's first name, for the write-ups"""
+    return OWN[T[tm][2]].split()[0]
+
+
+def tn(tm):
+    return T[tm][1]
+
+
+def pts(x):
+    return f"{x:.1f}"
+
+
+def names(players, with_proj=True):
+    """'CeeDee Lamb (15.0)' / 'Saquon Barkley (13.9) and George Pickens (10.7)'"""
+    parts = [f"{p['name']} ({pts(p['proj'])})" if with_proj else p['name'] for p in players]
+    if len(parts) <= 1:
+        return ''.join(parts)
+    return ', '.join(parts[:-1]) + ' and ' + parts[-1]
+
+
+def live_story(g):
+    """A few sentences in the voice of a fantasy column, from the numbers only."""
+    lead, trail = (g['h'], g['a']) if g['hp'] >= g['ap'] else (g['a'], g['h'])
+    lp, tp = max(g['hp'], g['ap']), min(g['hp'], g['ap'])
+    l_left, t_left = (g['hLeft'], g['aLeft']) if lead == g['h'] else (g['aLeft'], g['hLeft'])
+    l_rem, t_rem = sum(p['proj'] for p in l_left), sum(p['proj'] for p in t_left)
+    m = g['margin']
+    proj_m = m + l_rem - t_rem  # projected final margin, leader's view
+    L, Tt = fn(lead), fn(trail)
+    LT, TT = tn(lead), tn(trail)
+    if g['status'] == 'final':
+        if m < 1:
+            head = f"{LT} survives by {pts(m)}"
+        elif m < CLENCH:
+            head = f"{LT} holds off {TT} by {pts(m)}"
+        else:
+            head = f"{LT} over {TT}, {pts(lp)}–{pts(tp)}"
+        top_l = max(g['hStarters'] if lead == g['h'] else g['aStarters'], key=lambda p: p['pts'], default=None)
+        top_t = max(g['hStarters'] if trail == g['h'] else g['aStarters'], key=lambda p: p['pts'], default=None)
+        s = f"Final. {L} closes it out {pts(lp)} to {pts(tp)}, and nobody on either side has a snap left to change it."
+        if top_l:
+            s += f" {top_l['name']} ({pts(top_l['pts'])}) did the heavy lifting for {LT}"
+            s += f"; {top_t['name']} ({pts(top_t['pts'])}) was the best {Tt} had." if top_t else '.'
+        if m < CLENCH:
+            s += f" A {pts(m)}-point margin is the kind that lives in the group chat all week."
+        return head, s
+    if g['status'] == 'locked':
+        head = f"{LT} up {pts(m)} — book it"
+        if not t_left:
+            s = f"{L} leads {pts(lp)} to {pts(tp)} and {Tt} is out of bullets. {L} still has {names(l_left)} to go, so this one only gets wider."
+        else:
+            s = (f"{L} leads {pts(lp)} to {pts(tp)}. {Tt} has {names(t_left)} left, but that's {pts(t_rem)} of projection against a "
+                 f"{pts(m)}-point hole" + (f", and {L} still has {names(l_left)} to answer with" if l_left else '') +
+                 f". It would take roughly double the projection to steal it. Barring something historic from {names(t_left, False)}, {L} moves on.")
+        return head, s
+    # clencher or live: both sides can still swing it
+    if not l_left:
+        head = f"{Tt} chasing {pts(m)} with {names(t_left, False)} left"
+        s = (f"{L} is done at {pts(lp)} and can only watch. {Tt} sits at {pts(tp)} with {names(t_left)} still to play — "
+             f"{pts(t_rem)} of projection against a {pts(m)}-point deficit. ")
+        s += (f"On the numbers that's a {Tt} win by {pts(-proj_m)}." if proj_m < 0 else
+              f"On the numbers {L} still holds by {pts(proj_m)}, so {Tt} needs {names(t_left, False)} to beat projection by {pts(proj_m)}.")
+    elif not t_left:
+        head = f"{LT} up {pts(m)}, {Tt} out of players"
+        s = (f"{Tt} is finished at {pts(tp)}. {L} leads by {pts(m)} with {names(l_left)} still to play, so the only way this flips is "
+             f"a negative night from {names(l_left, False)}. Not impossible with a D/ST in the mix, but close to it.")
+    else:
+        head = (f"Coin flip: {LT} {pts(lp)}, {TT} {pts(tp)}" if abs(proj_m) < 3 and m < 8 else
+                f"{LT} up {pts(m)}, but it projects to a coin flip" if abs(proj_m) < 3 else
+                f"{LT} up {pts(m)}, but {Tt} has the edge in what's left" if proj_m < 0 else
+                f"{LT} up {pts(m)} with {WHEN} to come")
+        s = (f"{L} leads {pts(lp)} to {pts(tp)}, and this is nowhere near over. {Tt} still has {names(t_left)} to play; "
+             f"{L} counters with {names(l_left)}. ")
+        if proj_m < 0:
+            s += (f"Projection actually favors the comeback: {Tt} by {pts(-proj_m)} when the dust settles. "
+                  f"{L} needs {names(l_left, False)} to beat {names(t_left, False)} by {pts(m)} to hang on — "
+                  f"{pts(t_rem - l_rem - m)} better than the numbers say.")
+        else:
+            s += (f"On projection it ends {L} by {pts(proj_m)}. To flip it, {names(t_left, False)} {'have' if len(t_left) > 1 else 'has'} to outscore "
+                  f"{names(l_left, False)} by {pts(m)} or more — {'well within range' if m < 7 else 'a real ask, but one big night does it'}.")
+    return head, s
+
+
+def recap_story(m, rank):
+    w, l = (m['h'], m['a']) if m['win'] == 'H' else (m['a'], m['h'])
+    wp, lp = (m['hp'], m['ap']) if m['win'] == 'H' else (m['ap'], m['hp'])
+    wTop, lTop = (m['hTop'], m['aTop']) if m['win'] == 'H' else (m['aTop'], m['hTop'])
+    wB, lB = (m['hBench'], m['aBench']) if m['win'] == 'H' else (m['aBench'], m['hBench'])
+    mg = wp - lp
+    W_, L_ = fn(w), fn(l)
+    head = (f"Ass-clencher of the week: {tn(w)} by {pts(mg)}" if rank == 0 else
+            f"{tn(w)} edges {tn(l)} by {pts(mg)}" if mg < CLENCH else f"{tn(w)} over {tn(l)} by {pts(mg)}")
+    s = f"{W_} beat {L_} {pts(wp)} to {pts(lp)}. {wTop[0]} led the way with {pts(wTop[1])}; {lTop[0]} put up {pts(lTop[1])} in the loss."
+    if lB > mg + 0.05:
+        s += f" The part that stings: {L_} left {pts(lB)} on the bench — more than the margin. One lineup call the other way and this is a win."
+    elif lB > 0.05:
+        s += f" {L_} left {pts(lB)} on the bench, not quite enough to have mattered."
+    else:
+        s += f" {L_} started the best lineup available and still came up short — nothing to second-guess."
+    if wB > mg + 0.05 and mg < CLENCH:
+        s += f" {W_} wasn't exactly sharp either, with {pts(wB)} sitting on the bench, which makes the escape even luckier."
+    return head, s
+
+
+clench = {'live': None, 'recap': None, 'ledger': [], 'tight': 0, 'games': 0}
+if DONE_WEEKS >= 1:
+    # the closest game of every finished week
+    for w in range(1, DONE_WEEKS + 1):
+        wg = [g for g in cur_games if g['wk'] == w]
+        if not wg:
+            continue
+        g = min(wg, key=lambda g: abs(g['hp'] - g['ap']))
+        w_, l_ = (g['h'], g['a']) if g['hp'] >= g['ap'] else (g['a'], g['h'])
+        clench['ledger'].append({'wk': w, 'w': w_, 'l': l_, 'wp': r2(max(g['hp'], g['ap'])), 'lp': r2(min(g['hp'], g['ap'])),
+                                 'margin': r2(abs(g['hp'] - g['ap']))})
+    clench['games'] = len(cur_games)
+    clench['tight'] = sum(1 for g in cur_games if abs(g['hp'] - g['ap']) < CLENCH)
+    # last finished week, closest three written up
+    rc = sorted(cur_out['recap'], key=lambda m: abs(m['hp'] - m['ap']))
+    rc = [m for m in rc[:3] if abs(m['hp'] - m['ap']) < CLENCH] or rc[:1]  # the real clenchers; always at least the closest game
+    clench['recap'] = {'wk': DONE_WEEKS, 'games': []}
+    for i, m in enumerate(rc):
+        head, story = recap_story(m, i)
+        w_, l_ = (m['h'], m['a']) if m['win'] == 'H' else (m['a'], m['h'])
+        clench['recap']['games'].append({'w': w_, 'l': l_, 'wp': m['hp'] if m['win'] == 'H' else m['ap'], 'lp': m['ap'] if m['win'] == 'H' else m['hp'],
+                                         'margin': r2(abs(m['hp'] - m['ap'])), 'head': head, 'story': story})
+
+NFL = D.get('nfl')
+if PREVIEW and NFL and NFL.get('wk') == PREVIEW and str(PREVIEW) in WK:
+    state = {}  # proTeamId -> (state, kickoff, shortName)
+    for home, away, st, date, short_name, hs, as_, detail in NFL['games']:
+        state[home] = state[away] = (st, date, short_name, detail)
+    started = [g for g in NFL['games'] if g[2] != 'pre']
+    if started:  # the week is under way: build the live board
+        # what to call the games still to come: "Monday night", "Sunday night", "the late games"...
+        WHEN = 'the rest of the week'
+        try:
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
+            kicks = [datetime.fromisoformat(d.replace('Z', '+00:00')).astimezone(ZoneInfo('America/New_York'))
+                     for home, away, st, d, *_ in NFL['games'] if st == 'pre']
+            days = {k.strftime('%A') for k in kicks}
+            if len(days) == 1:
+                day = days.pop()
+                night = all(k.hour >= 19 for k in kicks)
+                WHEN = f"{day} night" if night else (f"{day}'s games" if len(kicks) > 1 else f"{day}'s game")
+            elif kicks:
+                WHEN = 'the late games'
+        except Exception:
+            pass
+        nw = {int(k): v for k, v in WK[str(PREVIEW)].items()}
+        lgames = []
+        for wkk, h, hp_, a, ap_, win, tier in S['s']:
+            if wkk != PREVIEW or a is None or h not in nw or a not in nw or 'live' not in nw[h]:
+                continue
+            def side(tm):
+                starters = [{'name': p[0], 'team': PRO.get(p[1], '?'), 'pts': p[2] or 0, 'proj': p[3] or 0} for p in nw[tm]['live']]
+                left = []
+                for p, raw in zip(starters, nw[tm]['live']):
+                    st = state.get(raw[1], ('post',))[0]
+                    if st == 'pre':
+                        left.append({**p, 'state': 'pre'})
+                    elif st == 'in':
+                        left.append({**p, 'proj': max(p['proj'] - p['pts'], 0), 'state': 'in'})
+                return starters, left
+            hS, hL = side(h)
+            aS, aL = side(a)
+            hp_live, ap_live = nw[h]['a'], nw[a]['a']
+            m = abs(hp_live - ap_live)
+            lead_left, trail_left = (hL, aL) if hp_live >= ap_live else (aL, hL)
+            l_rem, t_rem = sum(p['proj'] for p in lead_left), sum(p['proj'] for p in trail_left)
+            if not hL and not aL:
+                status = 'final'
+            elif m > 1.6 * t_rem + 0.5 * l_rem:
+                status = 'locked'
+            elif m < t_rem or abs(m + l_rem - t_rem) < CLENCH:
+                status = 'clencher'
+            else:
+                status = 'live'
+            g = {'h': h, 'a': a, 'hp': r2(hp_live), 'ap': r2(ap_live), 'margin': r2(m), 'status': status,
+                 'hLeft': hL, 'aLeft': aL, 'hStarters': hS, 'aStarters': aS,
+                 'hFinal': r1(hp_live + sum(p['proj'] for p in hL)), 'aFinal': r1(ap_live + sum(p['proj'] for p in aL))}
+            g['head'], g['story'] = live_story(g)
+            for k in ('hStarters', 'aStarters'):
+                del g[k]
+            lgames.append(g)
+        order = {'clencher': 0, 'live': 1, 'locked': 2, 'final': 3}
+        lgames.sort(key=lambda g: (order[g['status']], g['margin']))
+        todo = sorted({(d, s, det) for st, d, s, det in state.values() if st != 'post'})
+        clench['live'] = {'wk': PREVIEW, 'asOf': NFL['asOf'], 'games': lgames,
+                          'allDone': all(st == 'post' for st, *_ in state.values()),
+                          'next': [{'game': s, 'when': det, 'state': 'in' if any(v[2] == s and v[0] == 'in' for v in state.values()) else 'pre'} for d, s, det in todo]}
+cur_out['clench'] = clench
+
 # current-season playoff bracket (appears once ESPN schedules it)
 cur_out['bracket'] = [[wk, h, (r2(hp) if win != 'U' else None), a, (r2(ap) if (a is not None and win != 'U') else None), win]
                       for wk, h, hp, a, ap, win, tier in S['s'] if tier == 'W']

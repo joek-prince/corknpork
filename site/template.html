@@ -105,6 +105,20 @@ section.view>*,.block>*{min-width:0}
 .split i{display:block;height:100%;background:var(--accent)}
 .split i+i{background:var(--brass)}
 .alert{color:var(--loss);font-weight:600}
+/* ass clenchers: the write-ups */
+.stories{display:grid;gap:10px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:8px;min-width:0}
+.story.hot{box-shadow:inset 4px 0 0 var(--accent)}
+.story.me{box-shadow:inset 0 0 0 2px var(--brass)}
+.story.hot.me{box-shadow:inset 4px 0 0 var(--accent),inset 0 0 0 2px var(--brass)}
+.story .tag{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:var(--muted)}
+.story h3{font-size:17px;font-weight:700;line-height:1.3;text-wrap:balance}
+.story p{margin:0;font-size:14.5px;line-height:1.5;max-width:70ch}
+.story .left{display:grid;gap:3px;border-top:1px dashed var(--line);padding-top:8px;font-size:13px;color:var(--muted)}
+.story .left b{color:var(--ink);font-weight:600}
+.chip.hot{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.ledger td.tight{color:var(--accent);font-weight:700}
+.block h3.sub{font-family:var(--font-data);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .pv .side .tn::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px;background:var(--accent)}
 .pv .side+.side .tn::before{background:var(--brass)}
 .chip{display:inline-block;font-family:var(--font-data);font-weight:600;font-size:12px;letter-spacing:.04em;padding:1px 8px;border-radius:999px;background:var(--sunk);color:var(--muted)}
@@ -330,7 +344,7 @@ const meSel = document.getElementById('me');
 meSel.value = ME;
 meSel.classList.toggle('unset', !ME);
 function markMe(){
-  document.querySelectorAll('[data-o]').forEach(el => el.classList.toggle('me', !!ME && el.dataset.o === ME));
+  document.querySelectorAll('[data-o]').forEach(el => el.classList.toggle('me', !!ME && (el.dataset.o === ME || el.dataset.o2 === ME)));
 }
 meSel.addEventListener('change', () => { ME = meSel.value; store.set(ME); meSel.classList.toggle('unset', !ME); if (rendered.week) renderWeek(); markMe(); });
 const dO = name => `data-o="${esc(name)}"`;
@@ -426,14 +440,18 @@ function renderWeek(){
 
   const inPlayoffs = C.bracket && C.bracket.length && LW >= R.regWeeks && !C.seasonDone;
   parts.push(myWeek());
-  const jumps = [['wk-results', `Week ${LW} results`], ...(C.preview.length ? [['wk-preview', `Week ${NW} preview`]] : []), ['wk-power', 'Power rankings'], ['wk-standings', 'Standings'], ['wk-heat', 'Scores by week']];
+  const clench = clenchBlock(), clenchLive = !!(C.clench && C.clench.live && C.clench.live.games.length);
+  const jumps = [...(clenchLive ? [['wk-clench', 'Ass Clenchers']] : []), ['wk-results', `Week ${LW} results`], ...(clench && !clenchLive ? [['wk-clench', 'Ass Clenchers']] : []),
+    ...(C.preview.length ? [['wk-preview', `Week ${NW} preview`]] : []), ['wk-power', 'Power rankings'], ['wk-standings', 'Standings'], ['wk-heat', 'Scores by week']];
   parts.push(`<nav class="jump" aria-label="On this page">${jumps.map(([id, l]) => `<button type="button" data-jump="${id}">${l}</button>`).join('')}</nav>` +
     `<label class="jump-sel"><span class="sr">Jump to a section</span><select data-jump-sel><option value="">Jump to a section…</option>${jumps.map(([id, l]) => `<option value="${id}">${l}</option>`).join('')}</select></label>`);
   if (inPlayoffs) parts.push(bracketBlock());
+  if (clenchLive) parts.push(clench);
   parts.push(
     blk(`Week ${LW} awards`, '', `<div class="awards">${tiles}</div>`),
     blk(`Week ${LW} results`, 'Biggest margin first.', `<div class="games">${recap}</div>`, '', 'wk-results')
   );
+  if (clench && !clenchLive) parts.push(clench);
   if (preview) parts.push(blk(`Week ${NW} preview`, `ESPN projections for each starting lineup as of ${asOfTxt}. Lineups can still change before kickoff.`, `<div class="games">${preview}</div>`, '', 'wk-preview'));
   if (C.bracket && C.bracket.length && !inPlayoffs) parts.push(bracketBlock());
   parts.push(
@@ -462,6 +480,55 @@ function renderWeek(){
     mb.setAttribute('aria-expanded', String(on)); mb.textContent = on ? 'Show fewer stats' : 'Show all stats';
   }));
   markMe();
+}
+
+/* ================= ASS CLENCHERS ================= */
+// The close games, written up: a live board while the week is being played, then the recap and the season ledger.
+function clenchBlock(){
+  const K = C.clench;
+  if (!K) return '';
+  const L = K.live, live = L && L.games.length;
+  const chipFor = st => st === 'clencher' ? '<span class="chip hot">Ass-clencher watch</span>' : st === 'live' ? '<span class="chip">Still live</span>'
+    : st === 'locked' ? '<span class="chip">Locked up</span>' : '<span class="chip w">Final</span>';
+  const scoreSide = (id, p, lead, fin) => `<div class="side ${lead ? '' : 'lose'}"><span class="tn">${esc(tm(id).team)}</span><span class="on">${esc(tm(id).owner)}${fin != null && Math.abs(fin - p) > 0.05 ? ` · projects to ${f1(fin)}` : ''}</span><span class="sc num">${f1(p)}</span></div>`;
+  const leftTxt = (id, left) => left.length
+    ? `<span><b>${esc(first(tm(id).owner))}</b> still to play: ${left.map(p => `${esc(p.name)} <span class="num">${f1(p.proj)}</span>${p.state === 'in' ? ' (in progress)' : ''}`).join(', ')}</span>`
+    : `<span><b>${esc(first(tm(id).owner))}</b>: nobody left</span>`;
+  const parts = [];
+  if (live) {
+    const when = new Date(L.asOf).toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' });
+    const next = L.next.filter(n => n.state !== 'post');
+    const nextTxt = next.length ? ` ${next.map(n => `${esc(n.game)}${n.state === 'in' ? ' is on now' : ` kicks off ${esc(n.when)}`}`).join('; ')}.` : ' Every game is final; the week closes once ESPN locks the scores.';
+    const nHot = L.games.filter(g => g.status === 'clencher').length;
+    parts.push(`<p class="note">Week ${L.wk} live board as of ${when} ET.${nextTxt}${nHot ? ` ${nHot === 1 ? 'One matchup is' : nHot + ' matchups are'} still a coin flip.` : ''}</p>`);
+    parts.push(`<div class="stories">${L.games.map(g => {
+      const hl = g.hp >= g.ap;
+      return `<article class="story ${g.status === 'clencher' ? 'hot' : ''}" ${dO(tm(g.h).owner)} data-o2="${esc(tm(g.a).owner)}">
+        <div class="tag">${chipFor(g.status)}<span>Margin ${f1(g.margin)}</span></div>
+        ${scoreSide(g.h, g.hp, hl, g.status === 'final' ? null : g.hFinal)}${scoreSide(g.a, g.ap, !hl, g.status === 'final' ? null : g.aFinal)}
+        <h3>${esc(g.head)}</h3><p>${esc(g.story)}</p>
+        ${g.status === 'final' ? '' : `<div class="left">${leftTxt(g.h, g.hLeft)}${leftTxt(g.a, g.aLeft)}</div>`}
+      </article>`;
+    }).join('')}</div>`);
+  }
+  if (K.recap && K.recap.games.length) {
+    parts.push(`<h3 class="sub">Week ${K.recap.wk} in review</h3>`);
+    parts.push(`<div class="stories">${K.recap.games.map((g, i) => `<article class="story ${i === 0 ? 'hot' : ''}" ${dO(tm(g.w).owner)} data-o2="${esc(tm(g.l).owner)}">
+        <div class="tag">${i === 0 ? '<span class="chip hot">Ass-clencher</span>' : '<span class="chip">Close call</span>'}<span>Margin ${f1(g.margin)}</span></div>
+        ${scoreSide(g.w, g.wp, true, null)}${scoreSide(g.l, g.lp, false, null)}
+        <h3>${esc(g.head)}</h3><p>${esc(g.story)}</p></article>`).join('')}</div>`);
+  }
+  if (K.ledger.length) {
+    const tightest = Math.min(...K.ledger.map(r => r.margin));
+    parts.push(`<h3 class="sub">Clencher of the week, all season</h3>`);
+    parts.push(`<p class="note">${K.tight} of ${K.games} games this season have been decided by fewer than 10 points. The tightest is marked.</p>`);
+    parts.push(`<div class="tbl-wrap"><table class="ledger sticky1"><caption class="sr">Closest game each week</caption><thead><tr><th class="l" scope="col">Week</th><th class="l" scope="col">Winner</th><th class="l" scope="col">Over</th><th scope="col">Score</th><th scope="col">Margin</th></tr></thead><tbody>${
+      K.ledger.map(r => `<tr ${dO(tm(r.w).owner)} data-o2="${esc(tm(r.l).owner)}"><td class="l">Wk ${r.wk}</td>${tcell(tm(r.w).team, tm(r.w).owner)}${tcell(tm(r.l).team, tm(r.l).owner)}<td>${f2(r.wp)}–${f2(r.lp)}</td><td class="${r.margin === tightest ? 'tight' : ''}">${f2(r.margin)}</td></tr>`).join('')
+    }</tbody></table></div>`);
+  }
+  if (!parts.length) return '';
+  const note = live ? '' : `The closest finishes of Week ${LW}, written up, plus the tightest game of every week this season.`;
+  return blk('Ass Clenchers', note, parts.join(''), '', 'wk-clench');
 }
 
 /* the "your week" card for whoever is picked in Highlight my team */
