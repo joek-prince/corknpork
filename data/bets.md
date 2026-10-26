@@ -1,3 +1,19 @@
+**Week 7**
+
+| Austen | chiefs ML |
+| :---: | :---: |
+| Brendan | Texans ML |
+| Joe K | broncos ml  |
+| John | panthers ML |
+| Jake | JSN 100+ receiving |
+| Nick | buccs panthers OVA 44.5 |
+| Chris | NYG \+10 |
+| Michael | Jets \-3.5 |
+| Evan | lions \-3.5 |
+| Justin | 49ers \-2.5 |
+| Steve | DH TD |
+| Matt | josh Jacobs anytime |
+
 **Week 6**
 
 | Austen | giants ML ❌ |
