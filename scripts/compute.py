@@ -686,8 +686,31 @@ if os.path.exists(BETS):
         'latest': {'y': latest_y, 'wk': b_seasons[latest_y][-1]['wk'] if b_seasons[latest_y] else None},
     }
 
+# ---------- commissioner's weekly report ----------
+# One file per week in data/reports/, named YYYY-wkNN.md. Optional header lines ("by: Name", "title: ...") come
+# first; a blank line ends the header and the rest is the write-up, with blank lines between paragraphs.
+import os, re
+reports = []
+rep_dir = os.path.join(os.path.dirname(os.path.abspath(src)), 'reports')
+if os.path.isdir(rep_dir):
+    for fn in sorted(os.listdir(rep_dir)):
+        m = re.match(r'^(\d{4})-wk(\d{1,2})\.md$', fn)
+        if not m:
+            continue
+        text = open(os.path.join(rep_dir, fn), encoding='utf-8').read().replace('\r\n', '\n').strip('\n')
+        meta, body = {}, text
+        head, _, rest = text.partition('\n\n')
+        if head and all(re.match(r'^[a-z]+:\s', ln) for ln in head.split('\n')):
+            meta = {k.strip(): v.strip() for k, v in (ln.split(':', 1) for ln in head.split('\n'))}
+            body = rest
+        paras = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n\s*\n', body) if p.strip()]
+        if paras:
+            reports.append({'y': int(m.group(1)), 'wk': int(m.group(2)), 'by': meta.get('by', ''), 'title': meta.get('title', ''), 'paras': paras})
+reports.sort(key=lambda r: (r['y'], r['wk']))
+
 out = {
     'league': D['league'], 'asOf': D['asOf'], 'current': CUR, 'doneWeeks': DONE_WEEKS, 'previewWeek': PREVIEW,
+    'reports': reports,
     'regWeeks': S['reg'], 'poTeams': S['po'],
     'owners': OWN, 'seasons': seasons_out, 'ownerTable': owners_out, 'hist': {str(k): v for k, v in hist.items()},
     'records': rec, 'h2h': matrix, 'pairs': pairs,

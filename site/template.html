@@ -104,7 +104,8 @@ button,select{font:inherit;color:inherit}
 .av{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:28px;height:28px;border-radius:50%;
   background:var(--c,#3A4756);color:#fff;font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:.02em;overflow:hidden;vertical-align:middle;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
-.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff;visibility:hidden}
+.av.ok img{visibility:visible}
 
 /* ---- week hero ---- */
 .hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 28px;padding-bottom:14px;border-bottom:1px solid var(--line)}
@@ -276,6 +277,18 @@ select{min-height:42px;font-family:var(--font-head);font-weight:600;font-size:16
 .profile h2{font-family:var(--font-head);font-weight:800;font-size:32px;line-height:1;letter-spacing:.02em;text-transform:uppercase}
 .profile p{margin:4px 0 0;color:var(--muted);font-size:14px}
 
+/* commissioner's report: a column, set wider and looser than the stat sheets */
+.report{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.report .rh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:8px 16px;background:var(--raised);border-bottom:1px solid var(--line);
+  font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.report .rb{padding:16px 18px 6px;max-width:68ch}
+.report .rb p{margin:0 0 14px;font-size:16px;line-height:1.55}
+.report .rb p:first-child{font-family:var(--font-head);font-weight:700;font-size:22px;line-height:1.2;letter-spacing:.01em;margin-bottom:12px}
+.report .hashtag{color:var(--gold);font-weight:600}
+.report .rf{padding:4px 18px 14px;font-family:var(--font-head);font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--muted)}
+.rp{margin-bottom:2px}
+.rp button{min-height:34px;min-width:52px;font-size:13px;padding:0 10px}
+
 /* your team */
 .mine{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:4px;padding:14px 16px;display:grid;gap:12px}
 .mine h2{font-family:var(--font-head);font-weight:800;font-size:24px;line-height:1;letter-spacing:.02em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
@@ -395,7 +408,7 @@ const mono = name => { const w = String(name).replace(/[^A-Za-z0-9 ]/g, ' ').spl
 const idByTeam = {}; Object.entries(T).forEach(([id, t]) => { idByTeam[t.team] = +id; });
 const av = (name, id) => {
   const t = id != null ? tm(id) : (idByTeam[name] != null ? tm(idByTeam[name]) : null);
-  const logo = t && t.logo ? `<img src="${esc(t.logo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
+  const logo = t && t.logo ? `<img src="${esc(t.logo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.classList.add('ok')" onerror="this.remove()">` : '';
   return `<span class="av" style="--c:hsl(${hue(name)} 42% 40%)" aria-hidden="true">${esc(mono(name))}${logo}</span>`;
 };
 const abbr = (name, id) => {
@@ -550,11 +563,13 @@ function renderWeek(){
   const inPlayoffs = C.bracket && C.bracket.length && LW >= R.regWeeks && !C.seasonDone;
   parts.push(hero(), myWeek());
   const clench = clenchBlock(), clenchLive = !!LIVE;
-  const jumps = [...(clenchLive ? [['wk-clench', 'Ass Clenchers']] : []), ['wk-results', `Week ${LW} results`], ...(clench && !clenchLive ? [['wk-clench', 'Ass Clenchers']] : []),
+  const report = reportBlock();
+  const jumps = [...(clenchLive ? [['wk-clench', 'Ass Clenchers']] : []), ...(report ? [['wk-report', 'Commissioner']] : []), ['wk-results', `Week ${LW} results`], ...(clench && !clenchLive ? [['wk-clench', 'Ass Clenchers']] : []),
     ...(C.preview.length ? [['wk-preview', `Week ${NW} preview`]] : []), ['wk-power', 'Power rankings'], ['wk-standings', 'Standings'], ['wk-heat', 'Scores by week']];
   parts.push(`<nav class="jump" aria-label="On this page">${jumps.map(([id, l]) => `<button type="button" data-jump="${id}">${l}</button>`).join('')}</nav>`);
   if (inPlayoffs) parts.push(bracketBlock());
   if (clenchLive) parts.push(clench);
+  if (report) parts.push(report);
   parts.push(
     blk(`Week ${LW} awards`, '', `<div class="awards">${tiles}</div>`),
     blk(`Week ${LW} results`, 'Biggest margin first.', `<div class="games">${recap}</div>`, '', 'wk-results')
@@ -629,6 +644,29 @@ function clenchBlock(){
   if (!parts.length) return '';
   const note = live ? '' : `The closest finishes of Week ${LW}, written up, plus the tightest game of every week this season.`;
   return blk('Ass Clenchers', note, parts.join(''), '', 'wk-clench');
+}
+
+/* the commissioner's weekly report: the latest one in full, older ones a tap away */
+function reportBlock(){
+  const all = (R.reports || []).filter(r => r.y === YR);
+  if (!all.length) return '';
+  let cur = all[all.length - 1];
+  const tag = s => esc(s).replace(/(^|\s)#(\w+)/g, '$1<span class="hashtag">#$2</span>');
+  const render = r => `<article class="report">
+      <div class="rh"><span>Week ${r.wk}${r.title ? `: ${esc(r.title)}` : ''}</span><span>${r.by ? `${esc(r.by)}, commissioner` : 'Commissioner'}</span></div>
+      <div class="rb">${r.paras.map(p => `<p>${tag(p)}</p>`).join('')}</div>
+      <div class="rf">${r.by ? esc(r.by) : 'The commissioner'}${r.wk !== LW ? `, after Week ${r.wk}` : ''}</div></article>`;
+  const picker = all.length > 1 ? `<div class="seg rp" role="group" aria-label="Report week">${all.slice().reverse().map(r => `<button type="button" aria-pressed="${r === cur}" data-rw="${r.wk}">Wk ${r.wk}</button>`).join('')}</div>` : '';
+  const html = blk("Commissioner's report", '', `${picker}<div id="rp-out">${render(cur)}</div>`, '', 'wk-report');
+  queueMicrotask(() => {
+    const el = document.getElementById('wk-report'); if (!el) return;
+    el.querySelectorAll('[data-rw]').forEach(b => b.addEventListener('click', () => {
+      cur = all.find(r => r.wk === +b.dataset.rw);
+      el.querySelectorAll('[data-rw]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      el.querySelector('#rp-out').innerHTML = render(cur);
+    }));
+  });
+  return html;
 }
 
 /* the big week headline at the top of This Week */

@@ -30,6 +30,10 @@ If an update fails (expired ESPN cookies, the bet doc unreachable, Pages not pub
 
 Without the secret the alert job just logs what it would have sent.
 
+## The commissioner's report
+
+Each week's write-up lives in `data/reports/`, one file per week named like `2026-wk07.md`. The first lines can be `by: John M.` and `title: ...` (end the header with a blank line); everything after is the report, with blank lines between paragraphs. Hashtags are highlighted. The site shows the newest report for the current season at the top of This Week, with earlier weeks a tap away. Commit the file (or add it through GitHub's web editor) and the push rebuilds the site.
+
 ## The bet doc
 
 Each week is a two-column table (name | pick), newest week first. A line that is just a year (like **2025**) starts an older season. Put ✅ or ❌ after a pick to grade it; the site counts those on the next update.
