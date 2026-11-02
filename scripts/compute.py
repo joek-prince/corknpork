@@ -469,8 +469,12 @@ def live_story(g):
         head = f"{Tt} chasing {pts(m)} with {names(t_left, False)} left"
         s = (f"{L} is done at {pts(lp)} and can only watch. {Tt} sits at {pts(tp)} with {names(t_left)} still to play — "
              f"{pts(t_rem)} of projection against a {pts(m)}-point deficit. ")
-        s += (f"On the numbers that's a {Tt} win by {pts(-proj_m)}." if proj_m < 0 else
-              f"On the numbers {L} still holds by {pts(proj_m)}, so {Tt} needs {names(t_left, False)} to beat projection by {pts(proj_m)}.")
+        if abs(proj_m) < 0.5:
+            s += f"The projection lands almost exactly on the number. Dead heat: hit projection and {Tt} wins by a hair, fall a point short and {L} escapes."
+        elif proj_m < 0:
+            s += f"On the numbers that's a {Tt} win by {pts(-proj_m)}."
+        else:
+            s += f"On the numbers {L} still holds by {pts(proj_m)}, so {Tt} needs {names(t_left, False)} to beat projection by {pts(proj_m)} combined."
     elif not t_left:
         head = f"{LT} up {pts(m)}, {Tt} out of players"
         s = (f"{Tt} is finished at {pts(tp)}. {L} leads by {pts(m)} with {names(l_left)} still to play, so the only way this flips is "
@@ -479,16 +483,20 @@ def live_story(g):
         head = (f"Coin flip: {LT} {pts(lp)}, {TT} {pts(tp)}" if abs(proj_m) < 3 and m < 8 else
                 f"{LT} up {pts(m)}, but it projects to a coin flip" if abs(proj_m) < 3 else
                 f"{LT} up {pts(m)}, but {Tt} has the edge in what's left" if proj_m < 0 else
+                f"{LT} up {pts(m)}, {Tt} needs a miracle" if m >= 25 else
                 f"{LT} up {pts(m)} with {WHEN} to come")
-        s = (f"{L} leads {pts(lp)} to {pts(tp)}, and this is nowhere near over. {Tt} still has {names(t_left)} to play; "
+        opener = 'and this is nowhere near over' if m < 15 else 'with players still going on both sides'
+        s = (f"{L} leads {pts(lp)} to {pts(tp)}, {opener}. {Tt} still has {names(t_left)} to play; "
              f"{L} counters with {names(l_left)}. ")
         if proj_m < 0:
             s += (f"Projection actually favors the comeback: {Tt} by {pts(-proj_m)} when the dust settles. "
                   f"{L} needs {names(l_left, False)} to beat {names(t_left, False)} by {pts(m)} to hang on — "
                   f"{pts(t_rem - l_rem - m)} better than the numbers say.")
         else:
+            odds = ('well within range' if m < 7 else 'a real ask, but one big night does it' if m < 15 else
+                    'a long shot' if m < 25 else "the kind of thing that happens once a season, if that")
             s += (f"On projection it ends {L} by {pts(proj_m)}. To flip it, {names(t_left, False)} {'have' if len(t_left) > 1 else 'has'} to outscore "
-                  f"{names(l_left, False)} by {pts(m)} or more — {'well within range' if m < 7 else 'a real ask, but one big night does it'}.")
+                  f"{names(l_left, False)} by {pts(m)} or more — {odds}.")
     return head, s
 
 
