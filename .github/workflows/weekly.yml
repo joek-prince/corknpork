@@ -2,8 +2,14 @@ name: Update corknpork.net
 
 on:
   schedule:
-    - cron: '0 11 * * 2'   # Tuesday 11:00 UTC: after Monday Night Football
-    - cron: '0 20 * * 4'   # Thursday 20:00 UTC: fresh projections and bet picks before kickoff
+    # Times are UTC. Eastern is shown for EST (Nov–Mar); during EDT (Sep–Oct) each run lands an hour later Eastern, still after the games.
+    - cron: '40 21 * * 0'  # Sunday 4:40 PM ET: the 1 o'clock games are in
+    - cron: '5 1 * * 1'    # Sunday 8:05 PM ET: the 4 o'clock games are in
+    - cron: '20 5 * * 1'   # Monday 12:20 AM ET: after Sunday Night Football
+    - cron: '20 5 * * 2'   # Tuesday 12:20 AM ET: after Monday Night Football; the week closes
+    - cron: '0 11 * * 2'   # Tuesday 6:00 AM ET: pick up ESPN's overnight stat corrections
+    - cron: '0 20 * * 4'   # Thursday 3:00 PM ET: fresh projections and bet picks before kickoff
+    - cron: '20 5 * * 5'   # Friday 12:20 AM ET: after Thursday Night Football
   workflow_dispatch:       # "Run workflow" button for a manual refresh
     inputs:
       test_alert:

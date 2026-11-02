@@ -1,10 +1,10 @@
 # corknpork.net
 
-The Cork n' Pork fantasy football Hall of Fame: weekly recap and preview, the weekly bet, champions, records, rivalries, drafts and owner pages. It rebuilds itself from ESPN and the league bet doc every Tuesday morning and Thursday afternoon.
+The Cork n' Pork fantasy football Hall of Fame: weekly recap and preview, the weekly bet, champions, records, rivalries, drafts and owner pages. It rebuilds itself from ESPN and the league bet doc after each slate of games: Sunday after the 1 o'clock and 4 o'clock games, after Sunday night, Monday night and Thursday night football, Tuesday morning for stat corrections, and Thursday afternoon for projections and bet picks.
 
 ## How it updates
 
-`.github/workflows/weekly.yml` runs on a schedule (and on every push, or from **Actions → Update corknpork.net → Run workflow**):
+`.github/workflows/weekly.yml` runs on that schedule (and on every push, or from **Actions → Update corknpork.net → Run workflow**):
 
 1. `scripts/fetch.js` pulls the private ESPN league (ID 91427782) using the `ESPN_S2` and `SWID` cookies stored as repository secrets, and writes `data/league.json`.
 2. `scripts/bets.py` downloads the link-shared bet Google Doc as Markdown and writes `data/bets.json`.
