@@ -1,6 +1,22 @@
+**HenryWeek 8**
+
+| Austen | Bears ML |
+| :---: | :---: |
+| Brendan | Cowboys ML |
+| Joe K | Broncos Ml  |
+| John | Cowboys Cardinals Over |
+| Jake | Josh Allen (pistachio farmer) 260+ passing yards |
+| Nick | Tee Higgins 72.5 Receiving Yards |
+| Chris | Khalil Shakir 50+ |
+| Michael | Jaguars \-7.5 (or whatever current spread is) |
+| Evan | Bucs ML |
+| Justin | Bills ML |
+| Steve | Henry TD |
+| Matt | ceedee lamb anytime |
+
 **Week 7**
 
-| Austen | chiefs ML |
+| in Austen | chiefs ML |
 | :---: | :---: |
 | Brendan | Texans ML |
 | Joe K | broncos ml  |
