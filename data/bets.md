@@ -1,3 +1,19 @@
+**Week 9**
+
+| Austen | giants \-3 |
+| :---: | :---: |
+| Brendan | Eagles / Giants over 42.5 |
+| Joe K | broncos ML |
+| John | Ken Walker anytime TD |
+| Jake | over Bucs  |
+| Nick | rams \-4.5 |
+| Chris | Cards \+8.5 |
+| Michael | Patriots ML |
+| Evan | Lions \-6.5 |
+| Justin | bills ML |
+| Steve | Bijan rob tuddy  |
+| Matt | golden anytime |
+
 **HenryWeek 8**
 
 | Austen | Bears ML |
