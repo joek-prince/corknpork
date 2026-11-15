@@ -1,3 +1,19 @@
+**Week 10**
+
+| Austen |  |
+| :---: | :---: |
+| Brendan | Kirk Cousins 2+ TDs |
+| Joe K | Panthers \+1.5 |
+| John | Jonathan taylor anytime TD |
+| Jake | bills jets O 50.5 |
+| Nick | Bhayshul Tuten ATTD |
+| Chris | jettas tud |
+| Michael | Chiefs spread  |
+| Evan | Seattle ML |
+| Justin | packers ML |
+| Steve | d Henry tuddy |
+| Matt | James cook anytime |
+
 **Week 9**
 
 | Austen | giants \-3 |
