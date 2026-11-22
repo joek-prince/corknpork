@@ -1,3 +1,21 @@
+
+
+**Week 11** 
+
+| Austen | Steelers \-3.5 |
+| :---: | :---: |
+| Brendan | Eagles / Steelers Over |
+| Joe K | Broncos spread |
+| John | Gibbs anytime TD |
+| Jake | Saints and Bears under  |
+| Nick | lions \-3.5 |
+| Chris | skatt over 50 rushing |
+| Michael |  |
+| Evan | jets chargers over 43.5 |
+| Justin | Chuba Hubbard TD |
+| Steve | d Henry tuddy  |
+| Matt | Emmett Johnson Anythime  |
+
 **Week 10**
 
 | Austen |  |
